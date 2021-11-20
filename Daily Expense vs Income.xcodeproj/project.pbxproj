@@ -3,27 +3,74 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5A25147CEF533DE8639DA1C /* Pods_Daily_Expense_vs_Income.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */; };
+		F24F2D3D27396555005F77D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D3C27396554005F77D8 /* UserDefaults.swift */; };
+		F24F2D3F27396AD0005F77D8 /* Launch_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */; };
+		F24F2D4127397E5F005F77D8 /* RegistrationForNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */; };
+		F24F2D4427399AB0005F77D8 /* LastTransaction_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D4227399AAF005F77D8 /* LastTransaction_TableViewCell.swift */; };
+		F24F2D4527399AB0005F77D8 /* LastTransaction_TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24F2D4327399AAF005F77D8 /* LastTransaction_TableViewCell.xib */; };
+		F24F2D4D273BD80A005F77D8 /* Profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D4C273BD807005F77D8 /* Profile_ViewController.swift */; };
+		F24F2D4F273FA4F8005F77D8 /* RealmSwiftDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D4E273FA4F4005F77D8 /* RealmSwiftDB.swift */; };
+		F24F2D5527422437005F77D8 /* AllTransactions_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */; };
+		F24F2D57274289D0005F77D8 /* OTP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */; };
+		F24F2D592742DE51005F77D8 /* SetUpPasscode_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */; };
+		F24F2D5D2744A816005F77D8 /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D5C2744A813005F77D8 /* OtpVC.swift */; };
+		F24F2D6627467610005F77D8 /* Category_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D6427467610005F77D8 /* Category_CollectionViewCell.swift */; };
+		F24F2D6727467610005F77D8 /* Category_CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24F2D6527467610005F77D8 /* Category_CollectionViewCell.xib */; };
+		F24F2D6927467A98005F77D8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D6827467A98005F77D8 /* CategoryCell.swift */; };
+		F24F2D6B27468312005F77D8 /* Category_Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D6A27468312005F77D8 /* Category_Items.swift */; };
+		F266690327497CE4005B619A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F266690227497CE4005B619A /* Lottie */; };
+		F266690727498068005B619A /* data-scanning.json in Resources */ = {isa = PBXBuildFile; fileRef = F266690527498067005B619A /* data-scanning.json */; };
 		F27338EB273133B90050979E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338EA273133B90050979E /* AppDelegate.swift */; };
 		F27338ED273133B90050979E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338EC273133B90050979E /* SceneDelegate.swift */; };
-		F27338EF273133B90050979E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338EE273133B90050979E /* ViewController.swift */; };
 		F27338F2273133BA0050979E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27338F0273133BA0050979E /* Main.storyboard */; };
 		F27338F4273133BE0050979E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F27338F3273133BE0050979E /* Assets.xcassets */; };
 		F27338F7273133BE0050979E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27338F5273133BE0050979E /* LaunchScreen.storyboard */; };
+		F2733900273167F70050979E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338FF273167F70050979E /* ViewController.swift */; };
+		F2733902273168360050979E /* NewTransaction_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2733901273168360050979E /* NewTransaction_ViewController.swift */; };
+		F27339052733A19A0050979E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27339042733A1940050979E /* Transaction.swift */; };
+		F27339092733A4940050979E /* SQLite3DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27339082733A4930050979E /* SQLite3DB.swift */; };
+		F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */; };
+		F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E918F2ED8FA687D713C1C0C /* Pods-Daily Expense vs Income.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.debug.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.debug.xcconfig"; sourceTree = "<group>"; };
+		84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Expense_vs_Income.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD03E26F99E88495243C448B /* Pods-Daily Expense vs Income.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.release.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.release.xcconfig"; sourceTree = "<group>"; };
+		F24F2D3C27396554005F77D8 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch_ViewController.swift; sourceTree = "<group>"; };
+		F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForNotification.swift; sourceTree = "<group>"; };
+		F24F2D4227399AAF005F77D8 /* LastTransaction_TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTransaction_TableViewCell.swift; sourceTree = "<group>"; };
+		F24F2D4327399AAF005F77D8 /* LastTransaction_TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastTransaction_TableViewCell.xib; sourceTree = "<group>"; };
+		F24F2D4C273BD807005F77D8 /* Profile_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ViewController.swift; sourceTree = "<group>"; };
+		F24F2D4E273FA4F4005F77D8 /* RealmSwiftDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwiftDB.swift; sourceTree = "<group>"; };
+		F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactions_ViewController.swift; sourceTree = "<group>"; };
+		F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP_ViewController.swift; sourceTree = "<group>"; };
+		F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpPasscode_ViewController.swift; sourceTree = "<group>"; };
+		F24F2D5C2744A813005F77D8 /* OtpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
+		F24F2D6427467610005F77D8 /* Category_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_CollectionViewCell.swift; sourceTree = "<group>"; };
+		F24F2D6527467610005F77D8 /* Category_CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Category_CollectionViewCell.xib; sourceTree = "<group>"; };
+		F24F2D6827467A98005F77D8 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		F24F2D6A27468312005F77D8 /* Category_Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_Items.swift; sourceTree = "<group>"; };
+		F266690527498067005B619A /* data-scanning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "data-scanning.json"; sourceTree = "<group>"; };
 		F27338E7273133B90050979E /* Daily Expense vs Income.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Expense vs Income.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27338EA273133B90050979E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F27338EC273133B90050979E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F27338EE273133B90050979E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F27338F1273133BA0050979E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F27338F3273133BE0050979E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F27338F6273133BE0050979E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F27338F8273133BE0050979E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F27338FF273167F70050979E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F2733901273168360050979E /* NewTransaction_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransaction_ViewController.swift; sourceTree = "<group>"; };
+		F27339042733A1940050979E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		F27339082733A4930050979E /* SQLite3DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite3DB.swift; sourceTree = "<group>"; };
+		F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpBaseCurrency_ViewController.swift; sourceTree = "<group>"; };
+		F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpCashBalance_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +78,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A25147CEF533DE8639DA1C /* Pods_Daily_Expense_vs_Income.framework in Frameworks */,
+				F266690327497CE4005B619A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C55E44EDB62565170D550EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		18098DE8A58C13646DF08904 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E918F2ED8FA687D713C1C0C /* Pods-Daily Expense vs Income.debug.xcconfig */,
+				CD03E26F99E88495243C448B /* Pods-Daily Expense vs Income.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F266690427497FBE005B619A /* jsonfiles Animation */ = {
+			isa = PBXGroup;
+			children = (
+				F266690527498067005B619A /* data-scanning.json */,
+			);
+			path = "jsonfiles Animation";
+			sourceTree = "<group>";
+		};
 		F27338DE273133B90050979E = {
 			isa = PBXGroup;
 			children = (
 				F27338E9273133B90050979E /* Daily Expense vs Income */,
 				F27338E8273133B90050979E /* Products */,
+				18098DE8A58C13646DF08904 /* Pods */,
+				0C55E44EDB62565170D550EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +132,76 @@
 		F27338E9273133B90050979E /* Daily Expense vs Income */ = {
 			isa = PBXGroup;
 			children = (
+				F27339062733A4060050979E /* cell */,
+				F27339032733A15C0050979E /* model */,
+				F27338FE273167A40050979E /* viewControllers */,
+				F27339072733A4430050979E /* utils */,
 				F27338EA273133B90050979E /* AppDelegate.swift */,
 				F27338EC273133B90050979E /* SceneDelegate.swift */,
-				F27338EE273133B90050979E /* ViewController.swift */,
-				F27338F0273133BA0050979E /* Main.storyboard */,
 				F27338F3273133BE0050979E /* Assets.xcassets */,
-				F27338F5273133BE0050979E /* LaunchScreen.storyboard */,
 				F27338F8273133BE0050979E /* Info.plist */,
 			);
 			path = "Daily Expense vs Income";
+			sourceTree = "<group>";
+		};
+		F27338FE273167A40050979E /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F273390A2733EF8E0050979E /* All screens */,
+				F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */,
+				F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */,
+				F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */,
+				F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */,
+				F27338FF273167F70050979E /* ViewController.swift */,
+				F2733901273168360050979E /* NewTransaction_ViewController.swift */,
+				F24F2D4C273BD807005F77D8 /* Profile_ViewController.swift */,
+				F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */,
+				F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		F27339032733A15C0050979E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F27339042733A1940050979E /* Transaction.swift */,
+				F24F2D6827467A98005F77D8 /* CategoryCell.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F27339062733A4060050979E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				F24F2D4227399AAF005F77D8 /* LastTransaction_TableViewCell.swift */,
+				F24F2D4327399AAF005F77D8 /* LastTransaction_TableViewCell.xib */,
+				F24F2D6427467610005F77D8 /* Category_CollectionViewCell.swift */,
+				F24F2D6527467610005F77D8 /* Category_CollectionViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		F27339072733A4430050979E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F266690427497FBE005B619A /* jsonfiles Animation */,
+				F24F2D5C2744A813005F77D8 /* OtpVC.swift */,
+				F27339082733A4930050979E /* SQLite3DB.swift */,
+				F24F2D4E273FA4F4005F77D8 /* RealmSwiftDB.swift */,
+				F24F2D3C27396554005F77D8 /* UserDefaults.swift */,
+				F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */,
+				F24F2D6A27468312005F77D8 /* Category_Items.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		F273390A2733EF8E0050979E /* All screens */ = {
+			isa = PBXGroup;
+			children = (
+				F27338F0273133BA0050979E /* Main.storyboard */,
+				F27338F5273133BE0050979E /* LaunchScreen.storyboard */,
+			);
+			path = "All screens";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +211,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F27338FB273133BE0050979E /* Build configuration list for PBXNativeTarget "Daily Expense vs Income" */;
 			buildPhases = (
+				B50F2EDEF17FAF3F8B71CD02 /* [CP] Check Pods Manifest.lock */,
 				F27338E3273133B90050979E /* Sources */,
 				F27338E4273133B90050979E /* Frameworks */,
 				F27338E5273133B90050979E /* Resources */,
+				E284AFEBD46D2E36535DB276 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Daily Expense vs Income";
+			packageProductDependencies = (
+				F266690227497CE4005B619A /* Lottie */,
+			);
 			productName = "Daily Expense vs Income";
 			productReference = F27338E7273133B90050979E /* Daily Expense vs Income.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +252,9 @@
 				Base,
 			);
 			mainGroup = F27338DE273133B90050979E;
+			packageReferences = (
+				F266690127497CE3005B619A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = F27338E8273133B90050979E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -124,22 +269,85 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F266690727498068005B619A /* data-scanning.json in Resources */,
 				F27338F7273133BE0050979E /* LaunchScreen.storyboard in Resources */,
 				F27338F4273133BE0050979E /* Assets.xcassets in Resources */,
+				F24F2D4527399AB0005F77D8 /* LastTransaction_TableViewCell.xib in Resources */,
+				F24F2D6727467610005F77D8 /* Category_CollectionViewCell.xib in Resources */,
 				F27338F2273133BA0050979E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B50F2EDEF17FAF3F8B71CD02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Daily Expense vs Income-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E284AFEBD46D2E36535DB276 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F27338E3273133B90050979E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F27338EF273133B90050979E /* ViewController.swift in Sources */,
+				F27339092733A4940050979E /* SQLite3DB.swift in Sources */,
+				F24F2D4F273FA4F8005F77D8 /* RealmSwiftDB.swift in Sources */,
+				F2733902273168360050979E /* NewTransaction_ViewController.swift in Sources */,
+				F24F2D4D273BD80A005F77D8 /* Profile_ViewController.swift in Sources */,
+				F24F2D4427399AB0005F77D8 /* LastTransaction_TableViewCell.swift in Sources */,
+				F2733900273167F70050979E /* ViewController.swift in Sources */,
+				F24F2D3F27396AD0005F77D8 /* Launch_ViewController.swift in Sources */,
+				F24F2D57274289D0005F77D8 /* OTP_ViewController.swift in Sources */,
 				F27338EB273133B90050979E /* AppDelegate.swift in Sources */,
+				F24F2D592742DE51005F77D8 /* SetUpPasscode_ViewController.swift in Sources */,
+				F24F2D5527422437005F77D8 /* AllTransactions_ViewController.swift in Sources */,
+				F24F2D4127397E5F005F77D8 /* RegistrationForNotification.swift in Sources */,
+				F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */,
+				F24F2D5D2744A816005F77D8 /* OtpVC.swift in Sources */,
+				F24F2D3D27396555005F77D8 /* UserDefaults.swift in Sources */,
+				F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */,
 				F27338ED273133B90050979E /* SceneDelegate.swift in Sources */,
+				F27339052733A19A0050979E /* Transaction.swift in Sources */,
+				F24F2D6B27468312005F77D8 /* Category_Items.swift in Sources */,
+				F24F2D6627467610005F77D8 /* Category_CollectionViewCell.swift in Sources */,
+				F24F2D6927467A98005F77D8 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +491,7 @@
 		};
 		F27338FC273133BE0050979E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E918F2ED8FA687D713C1C0C /* Pods-Daily Expense vs Income.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +511,7 @@
 		};
 		F27338FD273133BE0050979E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD03E26F99E88495243C448B /* Pods-Daily Expense vs Income.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -341,6 +551,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F266690127497CE3005B619A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F266690227497CE4005B619A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F266690127497CE3005B619A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F27338DF273133B90050979E /* Project object */;
 }

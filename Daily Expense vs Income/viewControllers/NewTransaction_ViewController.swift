@@ -43,6 +43,31 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionView_BV: UIView!
     
+    @IBOutlet var title_label: UILabel!
+    @IBOutlet var type_label: UILabel!
+    @IBOutlet var amount_label: UILabel!
+    @IBOutlet var category_label: UILabel!
+    @IBOutlet var date_label: UILabel!
+    @IBOutlet var notes_label: UILabel!
+    @IBOutlet var saveBtn: UIButton!
+    
+    
+    
+    var title5 = "title5".localized()
+    var type = "type".localized()
+    var typeLabel = "typeLabel".localized()
+    var expenseL = "expenseL".localized()
+    var incomeL = "incomeL".localized()
+    var amount = "amount".localized()
+    var category_ = "category".localized()
+    var categorylabel = "categoryLabel".localized()
+    var date = "date".localized()
+    var setDate = "setDate".localized()
+    var notes = "notes".localized()
+    var notePlaceholder = "notePlaceholder".localized()
+    var errorLabel = "error".localized()
+    var saveBtn_label = "saveBtn".localized()
+    
     
     let defaults1 = UserDefaults.standard
     let defaults = DefaultsOfUser()
@@ -59,9 +84,10 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
     
     func initViews() {
         
-        
+        setLangValue()
         
         currencyLabel.text = defaults.getCurrency()
+        
         if defaults1.string(forKey: "categoryIcon") != nil && defaults1.string(forKey: "categoryIcon") != "" {
             categoryIcon.image = UIImage(systemName: defaults1.string(forKey: "categoryIcon")!)
             categoryLabel.setTitle((defaults1.string(forKey: "categoryTitle")! + " ▼"), for: .normal)
@@ -103,14 +129,35 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         setUpGridView()
         
     }
+    
+    
+    func setLangValue() {
+        
+        title_label.text = title5
+        type_label.text = type
+        typeSelectorIndicator.text = typeLabel
+        expenseSelectLabel.text = expenseL
+        incomeSelectLabel.text = incomeL
+        amount_label.text = amount
+        category_label.text = category_
+        categoryLabel.setTitle(categorylabel, for: .normal)
+        date_label.text = date
+        dateInputLabel.text = setDate
+        notes_label.text = notes
+        notesLabel.placeholder = notePlaceholder
+        warningLabel.text = errorLabel
+        saveBtn.setTitle(saveBtn_label, for: .normal)
+        
+    }
 
     
     @IBAction func datePicker_Action(_ sender: Any) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd.yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         dateInputLabel.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
+        print(datePicker.date)
         
     }
     
@@ -121,6 +168,8 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         ui.layer.shadowOffset = .zero
         ui.layer.shadowRadius = 5.0
     }
+    
+    
     
     
     @IBAction func backBtn_Action(_ sender: Any) {
@@ -161,40 +210,167 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         }
         
         let newTransaction = Transaction()
-        
-        
-        if defaults.getCurrency() == "USD"{
-            if type == "Expense ▼" {
-                newTransaction.amount = "- $" + amount
-            } else if type == "Income ▼" {
-                newTransaction.amount = "+ $" + amount
-            }
-        } else if defaults.getCurrency() == "KRW" {
-            if type == "Expense ▼" {
-                newTransaction.amount = "- " + amount + " won"
-            } else if type == "Income ▼" {
-                newTransaction.amount = "+ " + amount + " won"
-            }
-        } else if defaults.getCurrency() == "UZD"{
-            if type == "Expense ▼" {
-                newTransaction.amount = "- " + amount + " sum"
-            } else if type == "Income ▼" {
-                newTransaction.amount = "+ " + amount + " sum"
-            }
-        }
-        
+
+        newTransaction.amount = amount
         newTransaction.icon = defaults1.string(forKey: "categoryIcon")!
         newTransaction.type = type
         newTransaction.category = defaults1.string(forKey: "categoryTitle")!
         newTransaction.date = date
         newTransaction.notes = notes
         
-        realmDB.saveTransaction(object: newTransaction)
-    
-        openScreen(vc: "Home_VC")
         
+        //Calculation Stuff...
+
+        var totalBalance = Int(defaults.getCashBalance()!)
+        var income = Int(defaults.getIncome()!)
+        var expense = Int(defaults.getExpense()!)
+        
+        // Current date
+        let currentDate = Date()
+        let calendar = Calendar.current
+                
+        let currentYear = calendar.component(.year, from: currentDate) //year: Int
+        let currentMonth = calendar.component(.month, from: currentDate) //month: Int
+        let currentDay = calendar.component(.day, from: currentDate) //day: Int
+        
+        
+        // DatePicker orqali tanlangan date
+        let yearFromDatePicker = calendar.component(.year, from: datePicker.date) //year: Int
+        let monthFromDatePicker = calendar.component(.month, from: datePicker.date) //month: Int
+        let dayFromDatePicker = calendar.component(.day, from: datePicker.date) //day: Int
+        
+        
+        if currentYear == yearFromDatePicker {
+            //if years equals, and then months sholud be compared
+            if currentMonth == monthFromDatePicker {
+                
+                //if months equals, and then days be compared
+                if currentDay == dayFromDatePicker {
+                    //do
+                    if type == (expenseL + " ▼") {
+                        totalBalance = totalBalance! - Int(amount)!
+                        defaults.saveCashBalance(balance: String(totalBalance!))
+                        expense = expense! + Int(amount)!
+                        defaults.saveExpense(expense: String(expense!))
+                        print("Expense")
+                    } else if type == (incomeL + " ▼") {
+                        totalBalance = totalBalance! + Int(amount)!
+                        defaults.saveCashBalance(balance: String(totalBalance!))
+                        income = income! + Int(amount)!
+                        defaults.saveIncome(income: String(income!))
+                        print("Income")
+                    }
+                    print("Now")
+                    
+                } else if currentDay > dayFromDatePicker {
+                    // do
+                    if type == (expenseL + " ▼") {
+                        totalBalance = totalBalance! - Int(amount)!
+                        defaults.saveCashBalance(balance: String(totalBalance!))
+                        expense = expense! + Int(amount)!
+                        defaults.saveExpense(expense: String(expense!))
+                        
+                    } else if type == (incomeL + " ▼") {
+                        totalBalance = totalBalance! + Int(amount)!
+                        defaults.saveCashBalance(balance: String(totalBalance!))
+                        income = income! + Int(amount)!
+                        defaults.saveIncome(income: String(income!))
+                        
+                    }
+                    print("Before day")
+                }
+                
+                
+                //if month of datePicker less then current month
+                // do...
+            } else if currentMonth > monthFromDatePicker {
+                // do
+                if type == (expenseL + " ▼") {
+                    totalBalance = totalBalance! - Int(amount)!
+                    defaults.saveCashBalance(balance: String(totalBalance!))
+                    expense = expense! + Int(amount)!
+                    defaults.saveExpense(expense: String(expense!))
+                    
+                } else if type == (incomeL + " ▼") {
+                    totalBalance = totalBalance! + Int(amount)!
+                    defaults.saveCashBalance(balance: String(totalBalance!))
+                    income = income! + Int(amount)!
+                    defaults.saveIncome(income: String(income!))
+                    
+                }
+                print("Before month")
+            }
+            
+            
+            //if year of datePicker less then current year
+            // do...
+        } else if currentYear > yearFromDatePicker {
+            //do
+            if type == (expenseL + " ▼") {
+                totalBalance = totalBalance! - Int(amount)!
+                defaults.saveCashBalance(balance: String(totalBalance!))
+                expense = expense! + Int(amount)!
+                defaults.saveExpense(expense: String(expense!))
+                
+            } else if type == (incomeL + " ▼") {
+                totalBalance = totalBalance! + Int(amount)!
+                defaults.saveCashBalance(balance: String(totalBalance!))
+                income = income! + Int(amount)!
+                defaults.saveIncome(income: String(income!))
+                
+            }
+            print("Before year")
+        } else {
+            //will do
+            print("future")
+        }
+        
+
+        
+        
+//        realmDB.calculateCashFlow()
+        
+        realmDB.saveTransaction(object: newTransaction)
+        openScreen(vc: "Home_VC")
+    }
+        
+    func getCurrentDate() -> Date{
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return currentDate
     }
     
+    func registerForNotification(type: String, date: Calendar) {
+        
+        // Notification content.
+        let content = UNMutableNotificationContent()
+        content.title = "Hi Boss"
+        content.body = "Have you spent that amount of money today ?"
+        
+        //Date.
+        var dateComponents = DateComponents()
+        dateComponents.calendar = date
+        
+        
+        //Create the tigger as a repeating event.
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        //Create the request.
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        //Schedule the request with system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                //Handle any errors
+                print("DEBUD: Register For Notification - \(String(describing: error))")
+                
+            }
+        }
+        
+    }
     
     func openScreen(vc: String) {
         let vc = self.storyboard?.instantiateViewController(identifier: vc) as! ViewController
@@ -203,6 +379,9 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
     }
     
     //Type of Transaction...
+    
+    var income = "income".localized()
+    var expense = "expense".localized()
     
     func setUpTransactionType() {
 
@@ -230,7 +409,7 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         }
 
     @objc func expenseSelected(_ sender: UITapGestureRecognizer) {
-        typeSelectorIndicator.text = expenseSelectLabel.text! + " ▼"
+        typeSelectorIndicator.text = expense + " ▼"
         typeSelector_BV.isHidden.toggle()
     }
 
@@ -243,7 +422,7 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         }
 
     @objc func incomeSelected(_ sender: UITapGestureRecognizer) {
-        typeSelectorIndicator.text = incomeSelectLabel.text! + " ▼"
+        typeSelectorIndicator.text = income + " ▼"
         typeSelector_BV.isHidden.toggle()
         
     }

@@ -10,19 +10,29 @@ import UIKit
 
 class SetUpBaseCurrency_ViewController: UIViewController {
 
-
-    @IBOutlet weak var baseCurrency_: UILabel!
+    @IBOutlet var title_label: UILabel!
+    @IBOutlet var description_label: UILabel!
+    
+    @IBOutlet var baseCurrency_BV: UIView!
+    @IBOutlet var baseCurrency_: UILabel!
     @IBOutlet var nextBtnBackgroundView: UIView!
     @IBOutlet var bakgroundView: UIView!
 
-    @IBOutlet weak var currencyRange: UIView!
+    @IBOutlet var currencyRange: UIView!
     
-    @IBOutlet weak var _USD: UILabel!
-    @IBOutlet weak var _WON: UILabel!
-    @IBOutlet weak var _UZD: UILabel!
+    @IBOutlet var _USD: UILabel!
+    @IBOutlet var _WON: UILabel!
+    @IBOutlet var _UZD: UILabel!
     
-    @IBOutlet weak var rangeBackground: UIStackView!
+    @IBOutlet var rangeBackground: UIStackView!
     
+    
+    var title1 = "title1".localized()
+    var description1 = "description1".localized()
+    var currencyLabel = "currencyLabel".localized()
+    var usd = "USD".localized()
+    var won = "KRW".localized()
+    var uzs = "UZS".localized()
     
     let defaults = DefaultsOfUser()
     
@@ -37,9 +47,10 @@ class SetUpBaseCurrency_ViewController: UIViewController {
     
     func initViews() {
         
+        setLangValue()
         setupLabelTap()
         
-        
+        baseCurrency_BV.layer.cornerRadius = 13.0
         rangeBackground.layer.cornerRadius = 13.0
         modifierUI(ui: rangeBackground)
         currencyRange.layer.cornerRadius = 13.0
@@ -54,6 +65,18 @@ class SetUpBaseCurrency_ViewController: UIViewController {
         ui.layer.shadowOpacity = 0.5
         ui.layer.shadowOffset = .zero
         ui.layer.shadowRadius = 10
+    }
+    
+    func setLangValue() {
+        
+        title_label.text = title1
+        description_label.text = description1
+        baseCurrency_.text = currencyLabel
+        _USD.text = usd
+        _WON.text = won
+        _UZD.text = uzs
+        
+
     }
     
     func setupLabelTap() {

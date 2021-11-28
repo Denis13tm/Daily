@@ -9,16 +9,21 @@ import UIKit
 import Lottie
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet var navigationBarBackgroundView: UIView!
-    @IBOutlet var home_btn: UIView!
-    @IBOutlet var home_bnt_BImg: UIImageView!
+    @IBOutlet var localizationBtn: UIButton!
     
     @IBOutlet var main_img: UIImageView!
     
     @IBOutlet var totalMoney_view: UIImageView!
+    @IBOutlet var totalBalance_title: UILabel!
     @IBOutlet var totalBalance: UILabel!
     @IBOutlet var baseCurrency: UILabel!
+    @IBOutlet var incomeTitle: UILabel!
+    @IBOutlet var incomeLabel: UILabel!
+    @IBOutlet var expenseLabel: UILabel!
+    @IBOutlet var expenseTitle: UILabel!
+    
     
     @IBOutlet var totalMoney_background: UIView!
     @IBOutlet var add: UIButton!
@@ -36,6 +41,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var exp_profit_BView: UIView!
     @IBOutlet var exp_cost_BView: UIView!
     
+    @IBOutlet var lastTran: UILabel!
+    @IBOutlet var viewAll_Btn: UIButton!
+    @IBOutlet var today_label: UILabel!
+    @IBOutlet var addnewTran_lebel: UILabel!
     @IBOutlet var bottomSide_View: UIView!
     
     @IBOutlet var noTransactionsView: UIView!
@@ -46,6 +55,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var rightBtnBackgroundView: UIView!
     @IBOutlet var centerBtnBackgroundView: UIView!
     @IBOutlet var leftBtnBackgroundView: UIView!
+    
+    
+    var total_Balance = "totalBalance".localized()
+    var income = "income".localized()
+    var expense = "expense".localized()
+    var typeLabel = "typeLabel".localized()
+    var expProfit = "expProfit".localized()
+    var transaction = "transaction".localized()
+    var expCost = "expCost".localized()
+    var lastTranLabel = "lastTranLabel".localized()
+    var viewAll = "viewAll".localized()
+    var todayLabel = "todayLabel".localized()
+    var addNewTranLabel = "addNewTranLabel".localized()
+    var lang = "LangLabel".localized()
     
     let defaults1 = UserDefaults.standard
     let defaults = DefaultsOfUser()
@@ -61,6 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         initMethods()
 
     }
+    //MARK: - Methods
     
     @IBAction func expectingProfitBtn_Action(_ sender: Any) {
         setSelectedProfitBtn()
@@ -112,13 +136,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    //MARK: - Methods
-    
     func initMethods() {
-        
+        setLangValue()
         initViewsModifier()
         registerForNotification()
-        setupAnimation()
+        
+    }
+    
+    func setLangValue() {
+        
+        localizationBtn.setTitle(lang, for: .normal)
+        totalBalance_title.text = total_Balance
+        incomeTitle.text = income
+        expenseTitle.text = expense
+        exp_profit_Btn.setTitle(expProfit, for: .normal)
+        transactions_Btn.setTitle(transaction, for: .normal)
+        exp_cost_Btn.setTitle(expCost, for: .normal)
+        lastTran.text = lastTranLabel
+        viewAll_Btn.setTitle(viewAll, for: .normal)
+        today_label.text = todayLabel
+        addnewTran_lebel.text = addNewTranLabel
+
     }
     
     func registerForNotification() {
@@ -132,8 +170,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         
-        dateComponents.hour = 23
-        dateComponents.minute = 24
+        dateComponents.hour = 20
+        dateComponents.minute = 30
         
         
         //Create the tigger as a repeating event.
@@ -154,28 +192,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-    
+      
     
     func initViewsModifier() {
         
+        localizationBtn.setTitle(defaults.getLanguage(), for: .normal)
+        
         transactionToShow = realdb.getTransactions()
         
-        
         modifierUI(ui: navigationBarBackgroundView)
-        home_bnt_BImg.layer.cornerRadius = 11.0
         main_img.layer.cornerRadius = 22.0
-
+        localizationBtn.layer.cornerRadius = 8.0
 
         totalMoney_view.layer.cornerRadius = 22.0
         
-        totalBalance.text = defaults.getCashBalance()
+        totalBalance.text = Int(defaults.getCashBalance()!)?.formattedWithSeparator
         baseCurrency.text = defaults.getCurrency()
+        incomeLabel.text = Int(defaults.getIncome()!)?.formattedWithSeparator
+        expenseLabel.text = Int(defaults.getExpense()!)?.formattedWithSeparator
+        
 
         
         totalMoney_background.layer.cornerRadius = 22.0
         modifierUI(ui: totalMoney_background)
 
-        add.layer.cornerRadius = 27.5
 
 
         exp_profit_BViewImage.layer.cornerRadius = 18.0
@@ -205,6 +245,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    func setValueOfLanguage() {
+        
+    }
+    
     func modifierUI(ui: UIView) {
         ui.layer.shadowColor = UIColor.black.cgColor
         ui.layer.shadowOpacity = 0.5
@@ -213,9 +257,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func setupAnimation() {
-        animationView.animation = Animation.named("taking-notes")
+        animationView.animation = Animation.named("data-scanning")
         animationView.frame = noTransactionsView.bounds
-        animationView.backgroundColor = #colorLiteral(red: 0.9213312575, green: 0.9213312575, blue: 0.9213312575, alpha: 1)
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.play()
@@ -251,10 +294,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if transactionToShow.count == 0 {
             table_View.isHidden = true
             noTransactionsView.isHidden = false
+            setupAnimation()
         } else {
             table_View.isHidden = false
             noTransactionsView.isHidden = true
-            setupAnimation()
+            noTransactionsView.isUserInteractionEnabled = true
         }
         
         if transactionToShow.count >= 8 {
@@ -273,9 +317,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let icon = lastTransaction.icon
         cell.categoryImage.image = UIImage(systemName: icon)!
-        cell.amout.text = lastTransaction.amount
-        if lastTransaction.type == "Expense ▼"{
-            cell.amout.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        
+        if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Income ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyUS
+        } else if lastTransaction.type == "경비 ▼" || lastTransaction.type == "수입 ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyKR
+        } else if lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "Kirim ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyUZ
+        } else if lastTransaction.type == "Расходы ▼" || lastTransaction.type == "Доход ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyRU
+        }
+        
+        
+        if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "경비 ▼" || lastTransaction.type == "Расходы ▼" {
+            cell.amout.textColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
         } else {
             cell.amout.textColor = #colorLiteral(red: 0.4696043647, green: 0.8248788522, blue: 0.006127688114, alpha: 1)
         }
@@ -287,13 +342,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let lastTransaction = allTransactions[indexPath.row]
+        let lastTransaction = transactionToShow [indexPath.row]
         
-        let vc = self.storyboard?.instantiateViewController(identifier: "AllTransactions_ VC")
-        vc!.modalPresentationStyle = .fullScreen
-        self.present(vc!, animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(identifier: "SelectedTransaction_VC") as! SelectedTransaction_ViewController
 
-
+        
+        vc.selectedTransacion = lastTransaction
+        vc.amount = lastTransaction.amount
+        vc.categoryImg = lastTransaction.icon
+        vc.categoryLabel = lastTransaction.category
+        vc.type = lastTransaction.type
+        vc.date = lastTransaction.date
+        vc.note = lastTransaction.notes
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -302,13 +365,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
-            let lastTransaction = transactionToShow[indexPath.row]
-            realdb.deleteTransaction(object: lastTransaction)
-            transactionToShow = realdb.getTransactions()
-            table_View.reloadData()
+        let expenseL = "expenseL".localized()
+        let incomeL = "incomeL".localized()
+        
+        var totalBalance = Int(defaults.getCashBalance()!)
+        var income = Int(defaults.getIncome()!)
+        var expense = Int(defaults.getExpense()!)
+        
+        func showActionSheet() {
+            
+            let actionsheet = UIAlertController(title: "Would you like to delete this transaction?", message: nil, preferredStyle: .actionSheet)
+            
+            actionsheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                let lastTransaction = self.transactionToShow[indexPath.row]
+
+                if lastTransaction.type == (expenseL + " ▼") {
+                    totalBalance = totalBalance! + Int(lastTransaction.amount)!
+                    self.defaults.saveCashBalance(balance: String(totalBalance!))
+                    expense = expense! - Int(lastTransaction.amount)!
+                    self.defaults.saveExpense(expense: String(expense!))
+                } else if lastTransaction.type == (incomeL + " ▼") {
+                    totalBalance = totalBalance! - Int(lastTransaction.amount)!
+                    self.defaults.saveCashBalance(balance: String(totalBalance!))
+                    income = income! + Int(lastTransaction.amount)!
+                    self.defaults.saveIncome(income: String(income!))
+                }
+
+                self.realdb.deleteTransaction(object: lastTransaction)
+                self.transactionToShow = self.realdb.getTransactions()
+                self.table_View.reloadData()
+                self.openHomeScreen(vc: "Home_VC")
+            }))
+            
+            actionsheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            }))
+            
+            present(actionsheet, animated: true)
+            
         }
         
+        if editingStyle == .delete {
+            
+            showActionSheet()
+
+        }
+        
+    }
+    
+    
+    func openHomeScreen(vc: String) {
+        let vc = self.storyboard?.instantiateViewController(identifier: vc) as! ViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
 
@@ -317,4 +425,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  
 
 
+}
+
+extension Formatter {
+    static let number = NumberFormatter()
+}
+extension Locale {
+    static let englishUS: Locale = .init(identifier: "en_US")
+    static let koreaKR: Locale = .init(identifier: "ko_KR")
+    static let uzbek: Locale = .init(identifier: "uz_Latn_UZ")
+    static let russianRU: Locale = .init(identifier: "ru_RU")
+    // ... and so on
+}
+extension Numeric {
+    func formatted(with groupingSeparator: String? = nil, style: NumberFormatter.Style, locale: Locale = .current) -> String {
+        Formatter.number.locale = locale
+        Formatter.number.numberStyle = style
+        if let groupingSeparator = groupingSeparator {
+            Formatter.number.groupingSeparator = groupingSeparator
+        }
+        return Formatter.number.string(for: self) ?? ""
+    }
+    // Localized
+    var currency:   String { formatted(style: .currency) }
+    // Fixed locales
+    var currencyUS: String { formatted(style: .currency, locale: .englishUS) }
+    var currencyKR: String { formatted(style: .currency, locale: .koreaKR) }
+    var currencyUZ: String { formatted(style: .currency, locale: .uzbek) }
+    var currencyRU: String { formatted(style: .currency, locale: .russianRU) }
+
+}
+
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        return formatter
+    }()
+}
+extension Numeric {
+    var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
 }

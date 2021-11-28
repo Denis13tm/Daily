@@ -1,0 +1,91 @@
+// UZBEK
+
+// Set Up Preferred Language Screen and General
+"title0" = "Kerakli tilni tanlang";
+"description0" = "Iltimos, ilova ichida foydalanish uchun oʻzingizga maʼqul tilni tanlang. Ushbu sozlamani istalgan vaqtda asosiy sahifada o'zgartirishingiz mumkin.";
+"LangLabel" = "UZB";
+
+// Set Up Base Currency Screen and General
+"title1" = "Kerakli valyutani tanlang";
+"description1" = "Keling, kerakli valyutani tanlashdan boshlaylik. Boshqa valyutalardagi barcha operatsiyalar shu tanlangan valyuta bo'yicha amalga oshiriladi.";
+"currencyLabel" = "SUM";
+"USD" = "USD";
+"KWN" = "WON";
+"UZS" = "SUM";
+
+// Set Up Cash Balance Screen
+"title2" = "Hisobingizdagi pul miqdorini kiriting";
+"description2" = "Hozirgi hisobingizda qancha naqd pulingiz bor? Asosiy sahifada haqiqiy naqd pul miqdorini ko'rsatish uchun yuqoriga kiritishingizni so'raymiz.";
+
+// Set Up OTP Screen
+"title3" = "Parol o'rnating";
+"errorLabel" = "Parollar mos kelmaydi. Iltimos, yana bir bor urinib ko'ring.";
+"headline" = "Iltimos 4 xonali parolni kiriting";
+"enterPassword" = "Parolni kiriting";
+"confirmPassword" = "Parolni tasdiqlang";
+"digits" = "4 xonali";
+"description3" = "Maxfiyligingiz va moliyaviy ma'lumotlaringizni xavfsizligini ta'minlash uchun parol o'rnating.";
+
+// Set Up Launch Screen
+"launching" = "Boshlanayapdi...";
+
+// OTP Screen
+"title4" = "Cash Flow parolini kiriting";
+"errorL" = "Xato parol, Qayta urinib ko'ring!";
+"delete" = "O'chirish";
+
+// HOME Screen
+"totalBalance" = "UMUMIY BALANSINGIZ";
+"income" = "Kirim";
+"expense" = "Chiqim";
+"expProfit" = "Kutilayotgan foyda";
+"transaction" = "O'tkazmalar";
+"expCost" = "Kutilayotgan xarajat";
+"lastTranLabel" = "Oxirgi o'tkazmalar";
+"viewAll" = "Hammasini ko'rish";
+"todayLabel" = "BUGUN";
+"addNewTranLabel" = "Yangi o'tkazmalar qo'shing";
+
+// Add Transaction Screen
+"title5" = "O'tkazma qo'shish";
+"type" = " O'tkazma turi:";
+"typeLabel" = "Chiqim ▼";
+"expenseL" = "Chiqim";
+"incomeL" = "Kirim";
+"amount" = "Pul miqdori";
+"category" = "Kategoriya";
+"categoryLabel" = "O'yin-kulgu ▼";
+"date" = "Sana";
+"setDate" = "Sanani belgilang ▼";
+"notes" = "Eslatma:";
+"notePlaceholder" = "Izoh kiriting";
+"error!!!" = "Xato !!!!";
+"saveBtn" = "Saqlash";
+
+//Selected Transaction Screen
+"title6" = "O'tkazma";
+
+// All Transactions Screen
+"title7" = "Barcha O'tkazmalar";
+"noTran" = "Hali o'tkazma mavjud emas ";
+
+
+// Category Items
+"exp_Income" = "Kutilayotgan Foyda";
+"moneyTransfer" = "Pul O'tkazmasi";
+"books" = "Kitoblar";
+"rent" = "Ijara haqi";
+"carPayment" = "Avtomobil harajatlari";
+"education" = "Ta'lim";
+"food" = "Oziq-ovqat";
+"healthCare" = "Salomatlik";
+"salary" = "Ish haqi";
+"taxes" = "Soliqlar";
+"netflixSubs" = "Netflix a'zolik";
+"travel" = "Sayohat";
+"transportation" = "Yo'l haqi";
+"activity" = "Mashg'ulot";
+"entertainment" = "O'yin-kulgu";
+"shopping" = "Bozorlik qilish";
+"hairCut" = "Soch oldirish";
+"tools" = "Asbob-anjomlar";

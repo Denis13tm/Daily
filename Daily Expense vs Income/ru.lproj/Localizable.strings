@@ -1,0 +1,90 @@
+// RUSSIAN
+
+// Set Up Preferred Language Screen and General
+"title0" = "Выберите предпочтительный язык";
+"description0" = "Пожалуйста, выберите предпочитаемый язык для использования в приложении. Вы можете изменить этот параметр в любое время на главной странице.";
+"LangLabel" = "РУС";
+
+// Set Up Base Currency Screen
+"title1" = "Выберите базовую валюту";
+"description1" = "Начнем с выбора базовой валюты. Все транзакции в других валютах будут рассчитываться с учетом этой.";
+"currencyLabel" = "USD";
+"USD" = "USD";
+"KRW" = "WON";
+"UZS" = "SUM";
+
+// Set Up Cash Balance Screen
+"title2" = "Настройте текущий остаток денежных средств";
+"description2" = "Сколько денег у вас в бумажнике? Вставьте выше, чтобы показать фактический остаток денежных средств на главной странице.";
+
+// Set Up OTP Screen
+"title3" = "Установите новый пароль";
+"errorLabel" = "Коды доступа не совпадают. Пожалуйста, попробуйте еще раз.";
+"headline" = "Пожалуйста, введите 4-значный пароль";
+"enterPassword" = "Введите пароль";
+"confirmPassword" = "Подтвердите пароль";
+"digits" = "4 цифры";
+"description3" = "Установите новый пароль для вашей конфиденциальности и чтобы избежать кражи ваших финансовых данных.";
+
+// Set Up Launch Screen
+"launching" = "Запуск ...";o
+
+// OTP Screen
+"title4" = "Введите свой пароль от Cash Flow";
+"errorL" = "Неверный пароль. Пожалуйста, попробуйте еще раз!";
+"delete" = "Удалить";
+
+// HOME Screen
+"totalBalance" = "ИТОГОВЫЙ БАЛАНС";
+"income" = "Доход";
+"expense" = "Расходы";
+"expProfit" = "Ожидая прибыли";
+"transaction" = "Сделки";
+"expCost" = "Ож. стоимость";
+"lastTranLabel" = "Последние транзакции";
+"viewAll" = "Посмотреть все";
+"todayLabel" = "CЕГОДНЯ";
+"addNewTranLabel" = "Добавить новые транзакции";
+
+// Add Transaction Screen
+"title5" = "Добавить транзакцию";
+"type" = "Тип:";
+"typeLabel" = "Расходы ▼";
+"expenseL" = "Расходы";
+"incomeL" = "Доход";
+"amount" = "Количество";
+"category" = "Категория";
+"categoryLabel" = "Развлечение ▼";
+"date" = "Дата";
+"setDate" = "Установить дату ▼";
+"notes" = "Примечания:";
+"notePlaceholder" = "Введите заметки";
+"error!!!" = "Error !!!!";
+"saveBtn" = "Сохранить";
+
+//Selected Transaction Screen
+"title6" = "Сделка";
+
+// All Transactions Screen
+"title7" = "Все транзакции";
+"noTran" = "Транзакций еще нет";
+
+
+"exp_Income" = "Ожидая дохода";
+"moneyTransfer" = "Перевод денег";
+"books" = "Книги";
+"rent" = "Арендовать";
+"carPayment" = "Оплата автомобиля";
+"education" = "Образование";
+"food" = "продуктовый шоппинг";
+"healthCare" = "Здравоохранение";
+"salary" = "Зарплата";
+"taxes" = "Налоги";
+"netflixSubs" = "Подписка на Netflix";
+"travel" = "Путешествие";
+"transportation" = "Tранспортные расходы";
+"activity" = "Деятельность";
+"entertainment" = "Развлечение";
+"shopping" = "Покупка";
+"hairCut" = "Стрижка волос";
+"tools" = "Инструменты";

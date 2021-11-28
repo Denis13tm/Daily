@@ -1,8 +1,8 @@
 //
-//  SceneDelegate.swift
+//  Category_Items.swift
 //  Daily Expense vs Income
 //
-//  Created by 13 Denis on 02/11/2021.
+//  Created by Otabek Tuychiev 02/11/2021.
 //
 
 import UIKit

@@ -8,24 +8,31 @@
 import UIKit
 
 class Launch_ViewController: UIViewController {
-    
-    
-    
+
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet var launching_label: UILabel!
+    
+    var launching = "launching".localized()
     
     public let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initViews()
         
-        backgroundImageView.layer.cornerRadius = backgroundImageView.bounds.height / 3.5
-
-        getPermissonOfNC()
     }
     
     
     
 // MARK: - Methods...
+    
+    func initViews() {
+        launching_label.text = launching
+        backgroundImageView.layer.cornerRadius = backgroundImageView.bounds.height / 3.5
+
+        getPermissonOfNC()
+        
+    }
     
      func getPermissonOfNC() {
         let notificationCenter = UNUserNotificationCenter.current()
@@ -33,35 +40,44 @@ class Launch_ViewController: UIViewController {
             
             DispatchQueue.main.async { [self] in
                 
+                let language = userDefaults.string(forKey: "language")
                 let cashBalance = userDefaults.string(forKey: "cashBalance")
                 let baseCurrency = userDefaults.string(forKey: "currency")
                 let passcode = userDefaults.string(forKey: "passcode")
                 
+                if language != nil && language != "" {
+                    
+                    if baseCurrency != nil && baseCurrency != "" {
 
+                        if cashBalance != nil && cashBalance != "" {
 
-                if baseCurrency != nil && baseCurrency != "" {
+                            if passcode != nil && passcode != "" {
 
-                    if cashBalance != nil && cashBalance != "" {
+                                openScreen(vc: "OTP_VC")
 
-                        if passcode != nil && passcode != "" {
+                            } else {
 
-                            openScreen(vc: "OTP_VC")
+                                openScreen(vc: "Passcode_VC")
+                            }
 
                         } else {
 
-                            openScreen(vc: "Passcode_VC")
+                            openScreen(vc: "CashBalance_VC")
                         }
 
                     } else {
 
-                        openScreen(vc: "CashBalance_VC")
-                    }
-
-                } else {
-
                     openScreen(vc: "BaseCurrency_VC")
-
+                        
+                    }
+                } else {
+                    
+                    openScreen(vc: "SetLanguage_VC")
+                    
                 }
+
+
+                    
                 
                 
 

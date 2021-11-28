@@ -1,0 +1,91 @@
+// KOREAN
+
+// Set Up Preferred Language Screen and General
+"title0" = "기본 설정 언어를 선택합니다";
+"description0" = "앱 내에서 사용할 기본 언어를 선택하십시오. 이 설정은 메인 페이지에서 언제든지 변경할 수 있습니다.";
+"LangLabel" = "한국어";
+
+// Set Up Base Currency Screen
+"title1" = "기준통화를선택하십시오";
+"description1" = "기준 통화를 선택하는 것부터 시작하겠습니다. 다른 통화로 된 모든 거래는 이 통화로 계산됩니다.";
+"currencyLabel" = "USD";
+"USD" = "USD";
+"KRW" = "원";
+"UZS" = "SUM";
+
+// Set Up Cash Balance Screen
+"title2" = "현재 현금 잔액을 설정합니다";
+"description2" = "당신의 실물 지갑에 현금이 얼마나 있나요? 당신의 실제 현금 잔고를 메인 페이지에 나타내려면 위에 삽입하세요.";
+
+// Set Up OTP Screen
+"title3" = "새 암호를 설정합니다.";
+"errorLabel" = "암호가 일치하지 않습니다. 다시 시도하십시오.";
+"headline" = "비밀번호 4자리를 입력하세요.";
+"enterPassword" = "비밀번호 입력";
+"confirmPassword" = "비밀번호 확인";
+"digits" = "4자리 숫자";
+"description3" = "개인 정보를 보호하고 재무 데이터를 도난당하지 않도록 새 암호를 설정합니다.";
+
+// Set Up Launch Screen
+"launching" = "시작하는 중...";
+
+// OTP Screen
+"title4" = "Cash Flow의 비밀번호를 입력하십시오";
+"errorL" = "암호가 틀립니다. 다시 시도하십시오!";
+"delete" = "삭제하기";
+
+// HOME Screen
+"totalBalance" = "총 잔액";
+"income" = "수입";
+"expense" = "경비";
+"expProfit" = "기대 이익";
+"transaction" = "트랜잭션";
+"expCost" = "예상 비용";
+"lastTranLabel" = "마지막 트랜잭션";
+"viewAll" = "모두 보기";
+"todayLabel" = "오늘";
+"addNewTranLabel" = "새 트랜잭션 추가";
+
+// Add Transaction Screen
+"title5" = "새 트랜잭션을 추가합니다";
+"type" = "유형:";
+"typeLabel" = "경비 ▼";
+"expenseL" = "경비";
+"incomeL" = "수입";
+"amount" = "금액";
+"category" = "카테고리";
+"categoryLabel" = "오락 ▼";
+"date" = "날짜";
+"setDate" = "날짜 설정 ▼";
+"notes" = "메모들:";
+"notePlaceholder" = "참고 사항 입력";
+"error!!!" = "Error !!!!";
+"saveBtn" = "저장";
+
+//Selected Transaction Screen
+"title6" = "거래";
+
+// All Transactions Screen
+"title7" = "모든 트랜잭션";
+"noTran" = "아직 트랜잭션 없음";
+
+
+// Category Items
+"exp_Income" = "기대 소득";
+"moneyTransfer" = "송금";
+"books" = "서적";
+"rent" = "임차료";
+"carPayment" = "자동차 결제";
+"education" = "교육";
+"food" = "식료품 쇼핑";
+"healthCare" = "보건 의료";
+"salary" = "봉급";
+"taxes" = "세금 및 수수료";
+"netflixSubs" = "넷플릭스 구독";
+"travel" = "여행";
+"transportation" = "교통비";
+"activity" = "활동";
+"entertainment" = "오락";
+"shopping" = "쇼핑";
+"hairCut" = "이발";
+"tools" = "도구";

@@ -9,6 +9,11 @@ import UIKit
 
 class SetUpPasscode_ViewController: UIViewController {
     
+    @IBOutlet var title_label: UILabel!
+    @IBOutlet var headline_label: UILabel!
+    @IBOutlet var enter_pw: UILabel!
+    @IBOutlet var confirm_pw: UILabel!
+    @IBOutlet var description_label: UILabel!
     
     @IBOutlet var newPasscode: UITextField!
     @IBOutlet var confirmedPasscode: UITextField!
@@ -16,6 +21,13 @@ class SetUpPasscode_ViewController: UIViewController {
     @IBOutlet var nextBtn_Action: UIView!
     @IBOutlet var backgroundView: UIView!
     
+    var title3 = "title3".localized()
+    var errorLabel = "errorLabel".localized()
+    var headline = "headline".localized()
+    var enterPassword = "enterPassword".localized()
+    var confirmPassword = "confirmPassword".localized()
+    var description3 = "description3".localized()
+    var digits = "digits".localized()
     
     let defaults = DefaultsOfUser()
 
@@ -26,6 +38,7 @@ class SetUpPasscode_ViewController: UIViewController {
     }
     
     func initViews() {
+        setLangValue()
         
         nextBtn_Action.layer.cornerRadius = 18.0
         modifierUI(ui: nextBtn_Action)
@@ -39,6 +52,19 @@ class SetUpPasscode_ViewController: UIViewController {
         ui.layer.shadowOpacity = 0.5
         ui.layer.shadowOffset = .zero
         ui.layer.shadowRadius = 10
+    }
+    
+    func setLangValue() {
+        
+        title_label.text = title3
+        description_label.text = description3
+        headline_label.text = headline
+        enter_pw.text = enterPassword
+        confirm_pw.text = confirmPassword
+        warningLabel.text = errorLabel
+        newPasscode.placeholder = digits
+        confirmedPasscode.placeholder = digits
+
     }
     
     func setUp_texField() {

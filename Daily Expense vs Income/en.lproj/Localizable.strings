@@ -1,0 +1,95 @@
+// ENGLISH
+
+// Set Up Preferred Language Screen and General
+"title0" = "Select preferred language";
+"description0" = "Please select your preferred language to be used within the app. You can change this setting anytime on the main page.";
+"LangLabel" = "ENG";
+
+// Set Up Base Currency Screen
+"title1" = "Select base currency";
+"description1" = "Let's start by selecting your base currency. All transactions in other currencies will be calculated regards this one.";
+"currencyLabel" = "USD";
+"USD" = "USD";
+"KRW" = "WON";
+"UZS" = "SUM";
+
+// Set Up Cash Balance Screen
+"title2" = "Set up your current cash balance";
+"description2" = "How much cash do you have in your physical wallet? Insert above to show your actual cash balance on the main page.";
+
+// Set Up OTP Screen
+"title3" = "Set up a new password";
+"errorLabel" = "Passcodes don't match. Please try again.";
+"headline" = "Enter 4 digits password please";
+"enterPassword" = "Enter password";
+"confirmPassword" = "Confirm password";
+"digits" = "4 digits";
+"description3" = "Set up a new passcode for your privacy and to avoid stealing your financial data.";
+
+// Set Up Launch Screen
+"launching" = "Launching...";
+
+// OTP Screen
+"title4" = "Enter your Cash Flow Passcode";
+"errorL" = "Wrong passcode. Please try again !";
+"delete" = "Delete";
+
+// HOME Screen
+"totalBalance" = "TOTAL BALANCE";
+"income" = "Income";
+"expense" = "Expense";
+"expProfit" = "Expecting Profit";
+"transaction" = "Transactions";
+"expCost" = "Expecting Cost";
+"lastTranLabel" = "Last Transactions";
+"viewAll" = "View all";
+"todayLabel" = "TODAY";
+"addNewTranLabel" = "Add New Tranactions";
+
+// Add Transaction Screen
+"title5" = "Add Transaction";
+"type" = "Type:";
+"typeLabel" = "Expense ▼";
+"expenseL" = "Expense";
+"incomeL" = "Income";
+"amount" = "Amount";
+"category" = "Category";
+"categoryLabel" = "Entertainment ▼";
+"date" = "Date";
+"setDate" = "Set Date ▼";
+"notes" = "Notes:";
+"notePlaceholder" = "Enter some notes";
+"error!!!" = "Error !!!!";
+"saveBtn" = "Save";
+
+//Selected Transaction Screen
+"title6" = "Transaction";
+
+// All Transactions Screen
+"title7" = "All Transactions";
+"noTran" = "No Transactions Yet";
+
+
+// Category Items
+"exp_Income" = "Expecting Income";
+"moneyTransfer" = "Money Transfer";
+"books" = "Books";
+"rent" = "Rent";
+"carPayment" = "Car Payment";
+"education" = "Education";
+"food" = "Grocery Shopping";
+"healthCare" = "Health Care";
+"salary" = "Salary";
+"taxes" = "Taxes";
+"netflixSubs" = "Netflix Subscription";
+"travel" = "Travel";
+"transportation" = "Transportation Fee";
+"activity" = "Activity";
+"entertainment" = "Entertainment";
+"shopping" = "Shopping";
+"hairCut" = "Hair Cut";
+"tools" = "Tools";
+
+
+
+

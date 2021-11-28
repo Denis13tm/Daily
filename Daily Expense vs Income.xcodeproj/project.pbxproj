@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C5A25147CEF533DE8639DA1C /* Pods_Daily_Expense_vs_Income.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */; };
+		F248DE57274BD0680050FA40 /* SelectedTransaction_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */; };
+		F248DE5A274ECD760050FA40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F248DE5C274ECD760050FA40 /* Localizable.strings */; };
+		F248DE69274EF84C0050FA40 /* SetLanguage_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE68274EF84C0050FA40 /* SetLanguage_ViewController.swift */; };
+		F248DE6B274F25D90050FA40 /* LanguagePopUp_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE6A274F25D90050FA40 /* LanguagePopUp_ViewController.swift */; };
+		F248DE6D274F49070050FA40 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE6C274F49060050FA40 /* Languages.swift */; };
 		F24F2D3D27396555005F77D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D3C27396554005F77D8 /* UserDefaults.swift */; };
 		F24F2D3F27396AD0005F77D8 /* Launch_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */; };
 		F24F2D4127397E5F005F77D8 /* RegistrationForNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */; };
@@ -18,7 +23,6 @@
 		F24F2D5527422437005F77D8 /* AllTransactions_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */; };
 		F24F2D57274289D0005F77D8 /* OTP_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */; };
 		F24F2D592742DE51005F77D8 /* SetUpPasscode_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */; };
-		F24F2D5D2744A816005F77D8 /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D5C2744A813005F77D8 /* OtpVC.swift */; };
 		F24F2D6627467610005F77D8 /* Category_CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D6427467610005F77D8 /* Category_CollectionViewCell.swift */; };
 		F24F2D6727467610005F77D8 /* Category_CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F24F2D6527467610005F77D8 /* Category_CollectionViewCell.xib */; };
 		F24F2D6927467A98005F77D8 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F2D6827467A98005F77D8 /* CategoryCell.swift */; };
@@ -33,7 +37,6 @@
 		F2733900273167F70050979E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27338FF273167F70050979E /* ViewController.swift */; };
 		F2733902273168360050979E /* NewTransaction_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2733901273168360050979E /* NewTransaction_ViewController.swift */; };
 		F27339052733A19A0050979E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27339042733A1940050979E /* Transaction.swift */; };
-		F27339092733A4940050979E /* SQLite3DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27339082733A4930050979E /* SQLite3DB.swift */; };
 		F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */; };
 		F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +45,21 @@
 		4E918F2ED8FA687D713C1C0C /* Pods-Daily Expense vs Income.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.debug.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.debug.xcconfig"; sourceTree = "<group>"; };
 		84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Expense_vs_Income.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD03E26F99E88495243C448B /* Pods-Daily Expense vs Income.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.release.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.release.xcconfig"; sourceTree = "<group>"; };
+		F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTransaction_ViewController.swift; sourceTree = "<group>"; };
+		F248DE5B274ECD760050FA40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F248DE5D274ECE510050FA40 /* uz */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uz; path = uz.lproj/Main.strings; sourceTree = "<group>"; };
+		F248DE5E274ECE540050FA40 /* uz */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uz; path = uz.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F248DE5F274ECE570050FA40 /* uz */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uz; path = uz.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F248DE60274ECE820050FA40 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F248DE61274ECE830050FA40 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F248DE62274ECE840050FA40 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F248DE63274ECE940050FA40 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		F248DE64274ECE950050FA40 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F248DE65274ECE970050FA40 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F248DE67274ED2E30050FA40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F248DE68274EF84C0050FA40 /* SetLanguage_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLanguage_ViewController.swift; sourceTree = "<group>"; };
+		F248DE6A274F25D90050FA40 /* LanguagePopUp_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePopUp_ViewController.swift; sourceTree = "<group>"; };
+		F248DE6C274F49060050FA40 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		F24F2D3C27396554005F77D8 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch_ViewController.swift; sourceTree = "<group>"; };
 		F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationForNotification.swift; sourceTree = "<group>"; };
@@ -52,7 +70,6 @@
 		F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactions_ViewController.swift; sourceTree = "<group>"; };
 		F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP_ViewController.swift; sourceTree = "<group>"; };
 		F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpPasscode_ViewController.swift; sourceTree = "<group>"; };
-		F24F2D5C2744A813005F77D8 /* OtpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
 		F24F2D6427467610005F77D8 /* Category_CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_CollectionViewCell.swift; sourceTree = "<group>"; };
 		F24F2D6527467610005F77D8 /* Category_CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Category_CollectionViewCell.xib; sourceTree = "<group>"; };
 		F24F2D6827467A98005F77D8 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -68,7 +85,6 @@
 		F27338FF273167F70050979E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F2733901273168360050979E /* NewTransaction_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransaction_ViewController.swift; sourceTree = "<group>"; };
 		F27339042733A1940050979E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		F27339082733A4930050979E /* SQLite3DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLite3DB.swift; sourceTree = "<group>"; };
 		F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpBaseCurrency_ViewController.swift; sourceTree = "<group>"; };
 		F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpCashBalance_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +156,7 @@
 				F27338EC273133B90050979E /* SceneDelegate.swift */,
 				F27338F3273133BE0050979E /* Assets.xcassets */,
 				F27338F8273133BE0050979E /* Info.plist */,
+				F248DE5C274ECD760050FA40 /* Localizable.strings */,
 			);
 			path = "Daily Expense vs Income";
 			sourceTree = "<group>";
@@ -149,14 +166,17 @@
 			children = (
 				F273390A2733EF8E0050979E /* All screens */,
 				F24F2D3E27396AD0005F77D8 /* Launch_ViewController.swift */,
+				F248DE68274EF84C0050FA40 /* SetLanguage_ViewController.swift */,
 				F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */,
 				F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */,
 				F24F2D582742DE50005F77D8 /* SetUpPasscode_ViewController.swift */,
 				F27338FF273167F70050979E /* ViewController.swift */,
+				F248DE6A274F25D90050FA40 /* LanguagePopUp_ViewController.swift */,
 				F2733901273168360050979E /* NewTransaction_ViewController.swift */,
 				F24F2D4C273BD807005F77D8 /* Profile_ViewController.swift */,
 				F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */,
 				F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */,
+				F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -185,12 +205,11 @@
 			isa = PBXGroup;
 			children = (
 				F266690427497FBE005B619A /* jsonfiles Animation */,
-				F24F2D5C2744A813005F77D8 /* OtpVC.swift */,
-				F27339082733A4930050979E /* SQLite3DB.swift */,
 				F24F2D4E273FA4F4005F77D8 /* RealmSwiftDB.swift */,
 				F24F2D3C27396554005F77D8 /* UserDefaults.swift */,
 				F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */,
 				F24F2D6A27468312005F77D8 /* Category_Items.swift */,
+				F248DE6C274F49060050FA40 /* Languages.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -250,6 +269,9 @@
 			knownRegions = (
 				en,
 				Base,
+				uz,
+				ko,
+				ru,
 			);
 			mainGroup = F27338DE273133B90050979E;
 			packageReferences = (
@@ -272,6 +294,7 @@
 				F266690727498068005B619A /* data-scanning.json in Resources */,
 				F27338F7273133BE0050979E /* LaunchScreen.storyboard in Resources */,
 				F27338F4273133BE0050979E /* Assets.xcassets in Resources */,
+				F248DE5A274ECD760050FA40 /* Localizable.strings in Resources */,
 				F24F2D4527399AB0005F77D8 /* LastTransaction_TableViewCell.xib in Resources */,
 				F24F2D6727467610005F77D8 /* Category_CollectionViewCell.xib in Resources */,
 				F27338F2273133BA0050979E /* Main.storyboard in Resources */,
@@ -327,37 +350,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F27339092733A4940050979E /* SQLite3DB.swift in Sources */,
 				F24F2D4F273FA4F8005F77D8 /* RealmSwiftDB.swift in Sources */,
 				F2733902273168360050979E /* NewTransaction_ViewController.swift in Sources */,
 				F24F2D4D273BD80A005F77D8 /* Profile_ViewController.swift in Sources */,
 				F24F2D4427399AB0005F77D8 /* LastTransaction_TableViewCell.swift in Sources */,
 				F2733900273167F70050979E /* ViewController.swift in Sources */,
 				F24F2D3F27396AD0005F77D8 /* Launch_ViewController.swift in Sources */,
+				F248DE69274EF84C0050FA40 /* SetLanguage_ViewController.swift in Sources */,
 				F24F2D57274289D0005F77D8 /* OTP_ViewController.swift in Sources */,
 				F27338EB273133B90050979E /* AppDelegate.swift in Sources */,
+				F248DE6D274F49070050FA40 /* Languages.swift in Sources */,
 				F24F2D592742DE51005F77D8 /* SetUpPasscode_ViewController.swift in Sources */,
 				F24F2D5527422437005F77D8 /* AllTransactions_ViewController.swift in Sources */,
 				F24F2D4127397E5F005F77D8 /* RegistrationForNotification.swift in Sources */,
 				F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */,
-				F24F2D5D2744A816005F77D8 /* OtpVC.swift in Sources */,
 				F24F2D3D27396555005F77D8 /* UserDefaults.swift in Sources */,
 				F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */,
+				F248DE57274BD0680050FA40 /* SelectedTransaction_ViewController.swift in Sources */,
 				F27338ED273133B90050979E /* SceneDelegate.swift in Sources */,
 				F27339052733A19A0050979E /* Transaction.swift in Sources */,
 				F24F2D6B27468312005F77D8 /* Category_Items.swift in Sources */,
 				F24F2D6627467610005F77D8 /* Category_CollectionViewCell.swift in Sources */,
 				F24F2D6927467A98005F77D8 /* CategoryCell.swift in Sources */,
+				F248DE6B274F25D90050FA40 /* LanguagePopUp_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F248DE5C274ECD760050FA40 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F248DE5B274ECD760050FA40 /* en */,
+				F248DE5F274ECE570050FA40 /* uz */,
+				F248DE62274ECE840050FA40 /* ko */,
+				F248DE65274ECE970050FA40 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F27338F0273133BA0050979E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F27338F1273133BA0050979E /* Base */,
+				F248DE5D274ECE510050FA40 /* uz */,
+				F248DE60274ECE820050FA40 /* ko */,
+				F248DE63274ECE940050FA40 /* ru */,
+				F248DE67274ED2E30050FA40 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -366,6 +406,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				F27338F6273133BE0050979E /* Base */,
+				F248DE5E274ECE540050FA40 /* uz */,
+				F248DE61274ECE830050FA40 /* ko */,
+				F248DE64274ECE950050FA40 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -377,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -438,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

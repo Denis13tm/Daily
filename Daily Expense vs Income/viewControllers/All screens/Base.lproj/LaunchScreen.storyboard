@@ -34,7 +34,7 @@
                                 <rect key="frame" x="20" y="387" width="374" height="122"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CASH FLOW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpS-yr-4RH">
-                                        <rect key="frame" x="100.5" y="0.0" width="173.5" height="37"/>
+                                        <rect key="frame" x="20" y="0.0" width="334" height="37"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -46,6 +46,10 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="vpS-yr-4RH" firstAttribute="leading" secondItem="hc5-OC-c3W" secondAttribute="leading" constant="20" id="gPd-P8-p3O"/>
+                                    <constraint firstAttribute="trailing" secondItem="vpS-yr-4RH" secondAttribute="trailing" constant="20" id="vcS-GQ-mwr"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -64,21 +68,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-126.08695652173914" y="387.72321428571428"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="6NL-Zc-A7p">
-            <objects>
-                <viewController id="R0x-id-abw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="COB-jy-UiH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fhw-uw-PiO"/>
-                        <color key="backgroundColor" red="0.0" green="0.59937191379999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FDD-HF-YKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="606" y="388"/>
         </scene>
     </scenes>
     <resources>

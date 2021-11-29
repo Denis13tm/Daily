@@ -23,7 +23,6 @@ class SetLanguage_ViewController: UIViewController {
     @IBOutlet var _ENG: UILabel!
     @IBOutlet var _KOR: UILabel!
     @IBOutlet var _UZB: UILabel!
-    @IBOutlet var _RUS: UILabel!
     
     var title0 = "title0".localized()
     var description0 = "description0".localized()
@@ -94,7 +93,6 @@ class SetLanguage_ViewController: UIViewController {
         _ENG_Tapped()
         _KOR_Tapped()
         _UZB_Tapped()
-        _RUS_Tapped()
         
     }
     
@@ -141,22 +139,6 @@ class SetLanguage_ViewController: UIViewController {
         defaults.saveLanguage(baseLanguage: "UZB")
         baseLanguage_.text = "O'zbekcha"
         Bundle.setLanguage(lang: "uz")
-        languageRange.isHidden.toggle()
-        openScreen(vc: "SetLanguage_VC")
-    }
-    
-    
-    func _RUS_Tapped() {
-        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.rusTapped))
-        self._RUS.isUserInteractionEnabled = true
-        self._RUS.addGestureRecognizer(labelTap)
-
-        }
-
-    @objc func rusTapped(_ sender: UITapGestureRecognizer) {
-        defaults.saveLanguage(baseLanguage: "RUS")
-        baseLanguage_.text = "Rусский"
-        Bundle.setLanguage(lang: "ru")
         languageRange.isHidden.toggle()
         openScreen(vc: "SetLanguage_VC")
     }

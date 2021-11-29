@@ -1,6 +1,7 @@
 
 
 import Foundation
+import UIKit
 
 public class DefaultsOfUser {
     
@@ -12,6 +13,7 @@ public class DefaultsOfUser {
     let currency: String = "currency"
     let totalIncome: String = "totalIncome"
     let totalExpense: String = "totalExpense"
+    let profileImage: String = "profileImage"
     
     //Base Language
     func saveLanguage(baseLanguage: String) {
@@ -65,6 +67,15 @@ public class DefaultsOfUser {
     func getExpense() -> String? {
         let expense = defaults.string(forKey: totalExpense)
         return expense
+    }
+    
+    //Profile Image
+    func saveProfileImage(image: String) {
+        defaults.set(image, forKey: profileImage)
+    }
+    func getProfileImage() -> String? {
+        let image = defaults.string(forKey: profileImage)
+        return image
     }
     
 }

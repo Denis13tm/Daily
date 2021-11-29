@@ -14,14 +14,12 @@ class LanguagePopUp_ViewController: UIViewController {
     @IBOutlet var english: UILabel!
     @IBOutlet var korean: UILabel!
     @IBOutlet var uzbek: UILabel!
-    @IBOutlet var russian: UILabel!
     
     
     @IBOutlet var languageRange_BV: UIView!
     @IBOutlet var eng_BV: UIView!
     @IBOutlet var kor_BV: UIView!
     @IBOutlet var uz_BV: UIView!
-    @IBOutlet var rus_BV: UIView!
     
     let defaults = DefaultsOfUser()
     
@@ -45,7 +43,7 @@ class LanguagePopUp_ViewController: UIViewController {
         eng_BV.layer.cornerRadius = 18.0
         kor_BV.layer.cornerRadius = 18.0
         uz_BV.layer.cornerRadius = 18.0
-        rus_BV.layer.cornerRadius = 18.0
+
     }
     
     func modifierUI(ui: UIView) {
@@ -78,7 +76,6 @@ class LanguagePopUp_ViewController: UIViewController {
         _ENG_Tapped()
         _KOR_Tapped()
         _UZB_Tapped()
-        _RUS_Tapped()
 
         }
 
@@ -119,19 +116,6 @@ class LanguagePopUp_ViewController: UIViewController {
     @objc func uzbTapped(_ sender: UITapGestureRecognizer) {
         defaults.saveLanguage(baseLanguage: "UZB")
         Bundle.setLanguage(lang: "uz")
-        openScreen(vc: "Home_VC")
-    }
-    
-    func _RUS_Tapped() {
-        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.rusTapped))
-        self.russian.isUserInteractionEnabled = true
-        self.russian.addGestureRecognizer(labelTap)
-
-        }
-
-    @objc func rusTapped(_ sender: UITapGestureRecognizer) {
-        defaults.saveLanguage(baseLanguage: "РУС")
-        Bundle.setLanguage(lang: "ru")
         openScreen(vc: "Home_VC")
     }
     

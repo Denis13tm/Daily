@@ -163,15 +163,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Notification content.
         let content = UNMutableNotificationContent()
-        content.title = "Hi "
+        content.title = "Hi Boss"
         content.body = "Did you check your cash balance today"
         
         //Date.
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         
-        dateComponents.hour = 20
-        dateComponents.minute = 30
+        dateComponents.hour = 23
+        dateComponents.minute = 00
         
         
         //Create the tigger as a repeating event.
@@ -195,6 +195,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
       
     
     func initViewsModifier() {
+        
+        let img = defaults.getProfileImage()
+        
+        if img != nil && img != ""{
+            main_img.image = defaults.getProfileImage()?.toImage()
+        }
         
         localizationBtn.setTitle(defaults.getLanguage(), for: .normal)
         
@@ -324,12 +330,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.amout.text = Int(lastTransaction.amount)?.currencyKR
         } else if lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "Kirim ▼" {
             cell.amout.text = Int(lastTransaction.amount)?.currencyUZ
-        } else if lastTransaction.type == "Расходы ▼" || lastTransaction.type == "Доход ▼" {
-            cell.amout.text = Int(lastTransaction.amount)?.currencyRU
         }
         
         
-        if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "경비 ▼" || lastTransaction.type == "Расходы ▼" {
+        if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "경비 ▼" {
             cell.amout.textColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
         } else {
             cell.amout.textColor = #colorLiteral(red: 0.4696043647, green: 0.8248788522, blue: 0.006127688114, alpha: 1)
@@ -382,13 +386,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if lastTransaction.type == (expenseL + " ▼") {
                     totalBalance = totalBalance! + Int(lastTransaction.amount)!
                     self.defaults.saveCashBalance(balance: String(totalBalance!))
-                    expense = expense! - Int(lastTransaction.amount)!
-                    self.defaults.saveExpense(expense: String(expense!))
+                    if expense! >= 0 {
+                        expense = expense! - Int(lastTransaction.amount)!
+                        self.defaults.saveExpense(expense: String(expense!))
+                    }
                 } else if lastTransaction.type == (incomeL + " ▼") {
                     totalBalance = totalBalance! - Int(lastTransaction.amount)!
                     self.defaults.saveCashBalance(balance: String(totalBalance!))
-                    income = income! + Int(lastTransaction.amount)!
-                    self.defaults.saveIncome(income: String(income!))
+                    if income! >= 0 {
+                        income = income! - Int(lastTransaction.amount)!
+                        self.defaults.saveIncome(income: String(income!))
+                    }
                 }
 
                 self.realdb.deleteTransaction(object: lastTransaction)

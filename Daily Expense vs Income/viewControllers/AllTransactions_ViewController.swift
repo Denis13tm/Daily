@@ -30,8 +30,14 @@ class AllTransactions_ViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         initMethods()
+        overrideUserInterfaceStyle = .light
 
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animatedTableView()
     }
     
     //MARK: - Methods...
@@ -64,6 +70,23 @@ class AllTransactions_ViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
+    public func animatedTableView() {
+        table_View.reloadData()
+        let cells = table_View.visibleCells
+        let tableViewHeight = table_View.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+    }
+    
     
     @IBAction func backBtn_Action(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -93,7 +116,14 @@ class AllTransactions_ViewController: UIViewController, UITableViewDelegate, UIT
         let icon = lastTransaction.icon
 
         cell.categoryImage.image = UIImage(systemName: icon)!
-        cell.amout.text = lastTransaction.amount
+        
+        if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Income ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyUS
+        } else if lastTransaction.type == "경비 ▼" || lastTransaction.type == "수입 ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyKR
+        } else if lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "Kirim ▼" {
+            cell.amout.text = Int(lastTransaction.amount)?.currencyUZ
+        }
         
         if lastTransaction.type == "Expense ▼" || lastTransaction.type == "Chiqim ▼" || lastTransaction.type == "경비 ▼" {
             cell.amout.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -141,8 +171,6 @@ class AllTransactions_ViewController: UIViewController, UITableViewDelegate, UIT
             realdb.deleteTransaction(object: lastTransaction)
             allTransactions = realdb.getTransactions()
             table_View.reloadData()
-            openHomeScreen(vc: "Home_VC")
-
         }
     }
     

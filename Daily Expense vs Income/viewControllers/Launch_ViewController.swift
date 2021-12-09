@@ -19,7 +19,7 @@ class Launch_ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
-        
+        overrideUserInterfaceStyle = .light
     }
     
     
@@ -31,12 +31,11 @@ class Launch_ViewController: UIViewController {
         backgroundImageView.layer.cornerRadius = backgroundImageView.bounds.height / 3.5
 
         getPermissonOfNC()
-        
     }
     
      func getPermissonOfNC() {
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error)in
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error)in
             
             DispatchQueue.main.async { [self] in
                 
@@ -75,11 +74,6 @@ class Launch_ViewController: UIViewController {
                     openScreen(vc: "SetLanguage_VC")
                     
                 }
-
-
-                    
-                
-                
 
                 
             }

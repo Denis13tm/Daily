@@ -7,8 +7,11 @@
 
 import UIKit
 import Lottie
+import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UNUserNotificationCenterDelegate, CellActionDelegate {
+    
+    
     
     @IBOutlet var navigationBarBackgroundView: UIView!
     @IBOutlet var localizationBtn: UIButton!
@@ -57,6 +60,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var leftBtnBackgroundView: UIView!
     
     
+    
+    
+    
+    
     var total_Balance = "totalBalance".localized()
     var income = "income".localized()
     var expense = "expense".localized()
@@ -74,16 +81,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let defaults = DefaultsOfUser()
     
     var transactionToShow = [Transaction]()
+    var upcomingTrn = [Transaction]()
     let realdb = RealmSwiftDB()
     let animationView = AnimationView()
-    
+    var app: UIApplication = UIApplication.shared
+    let notificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initMethods()
-
+        overrideUserInterfaceStyle = .light
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animatedTableView()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            let defaults1 = UserDefaults.standard
+            if response.notification.request.identifier == defaults1.string(forKey: "UNID") {
+                let vc = self.storyboard?.instantiateViewController(identifier: "AllTransactions_VC") as! AllTransactions_ViewController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+                
+                
+                
+                print("DONE333")
+            }
+            completionHandler()
+            
+        }
+    }
+    
+    
+    
     //MARK: - Methods
     
     @IBAction func expectingProfitBtn_Action(_ sender: Any) {
@@ -139,8 +173,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func initMethods() {
         setLangValue()
         initViewsModifier()
-        registerForNotification()
-        
     }
     
     func setLangValue() {
@@ -159,57 +191,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    func registerForNotification() {
-        
-        // Notification content.
-        let content = UNMutableNotificationContent()
-        content.title = "Hi Boss"
-        content.body = "Did you check your cash balance today"
-        
-        //Date.
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-        
-        dateComponents.hour = 23
-        dateComponents.minute = 00
-        
-        
-        //Create the tigger as a repeating event.
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        //Create the request.
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-        
-        //Schedule the request with system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                //Handle any errors
-                print("DEBUD: Register For Notification - \(String(describing: error))")
-                
-            }
-        }
-        
-    }
-      
     
     func initViewsModifier() {
+        
+        notificationCenter.delegate = self
         
         let img = defaults.getProfileImage()
         
         if img != nil && img != ""{
             main_img.image = defaults.getProfileImage()?.toImage()
         }
-        
         localizationBtn.setTitle(defaults.getLanguage(), for: .normal)
         
         transactionToShow = realdb.getTransactions()
         
+        
         modifierUI(ui: navigationBarBackgroundView)
         main_img.layer.cornerRadius = 22.0
         localizationBtn.layer.cornerRadius = 8.0
-
         totalMoney_view.layer.cornerRadius = 22.0
         
         totalBalance.text = Int(defaults.getCashBalance()!)?.formattedWithSeparator
@@ -217,43 +216,73 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         incomeLabel.text = Int(defaults.getIncome()!)?.formattedWithSeparator
         expenseLabel.text = Int(defaults.getExpense()!)?.formattedWithSeparator
         
-
         
         totalMoney_background.layer.cornerRadius = 22.0
         modifierUI(ui: totalMoney_background)
-
-
-
         exp_profit_BViewImage.layer.cornerRadius = 18.0
         exp_profit_BView.layer.cornerRadius = 18.0
-
-
-
         transactions_BViewImage.layer.cornerRadius = 18.0
         transactions_BView.layer.cornerRadius = 18.0
-
-
-
         exp_cost_BViewImage.layer.cornerRadius = 18.0
         exp_cost_BView.layer.cornerRadius = 18.0
-
         bottomSide_View.layer.cornerRadius = 22.0
         modifierUI(ui: bottomSide_View)
-       
         bottomSidesItemView.layer.cornerRadius = 18.0
         modifierUI(ui: bottomSidesItemView)
-        
         rightBtnBackgroundView.layer.cornerRadius = 13.0
         centerBtnBackgroundView.layer.cornerRadius = 13.0
         leftBtnBackgroundView.layer.cornerRadius = 13.0
         
         
-        
     }
     
-    func setValueOfLanguage() {
-        
+    func getUpTrnCalculation() {
+
+        // Current date
+        let currentDate = Date()
+        let calendar = Calendar.current
+
+        let currentYear = calendar.component(.year, from: currentDate)
+        let currentMonth = calendar.component(.month, from: currentDate)
+        let currentDay = calendar.component(.day, from: currentDate)
+
+
+        //Calculation Stuff...
+        var totalBalance_cal = Int(defaults.getCashBalance()!)
+        var income_cal = Int(defaults.getIncome()!)
+        var expense_cal = Int(defaults.getExpense()!)
+
+        for singleT in transactionToShow {
+            if singleT.isPresent == true {
+                upcomingTrn.append(singleT)
+            }
+        }
+
+
+
+        for trn in upcomingTrn {
+            if trn.year == currentYear && trn.month == currentMonth && trn.day == currentDay {
+
+                if trn.type == "Income ▼" || trn.type == "Kirim ▼" || trn.type == "수입 ▼" {
+                    totalBalance_cal = totalBalance_cal! + Int(trn.amount)!
+                    defaults.saveCashBalance(balance: String(totalBalance_cal!))
+                    income_cal = income_cal! + Int(trn.amount)!
+                    defaults.saveIncome(income: String(income_cal!))
+                } else if trn.type == "Expense ▼" || trn.type == "Chiqim ▼" || trn.type == "경비 ▼" {
+                    totalBalance_cal = totalBalance_cal! - Int(trn.amount)!
+                    defaults.saveCashBalance(balance: String(totalBalance_cal!))
+                    expense_cal = expense_cal! + Int(trn.amount)!
+                    defaults.saveExpense(expense: String(expense_cal!))
+                    defaults.saveIncome(income: String(income_cal!))
+                }
+                trn.isPresent = false
+                realdb.deleteTransaction(object: trn)
+                table_View.reloadData()
+            }
+        }
+
     }
+      
     
     func modifierUI(ui: UIView) {
         ui.layer.shadowColor = UIColor.black.cgColor
@@ -273,8 +302,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-
-    
     @IBAction func addBtn_Action(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "NewTransaction_VC") as! NewTransaction_ViewController
         vc.modalPresentationStyle = .fullScreen
@@ -282,20 +309,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func viewAllBtn_Action(_ sender: Any) {
-        openScreen(vc: "AllTransactions_ VC")
+        openScreen(vc: "AllTransactions_VC")
     }
     
-    func openScreen(vc: String) {
-        let vc = self.storyboard?.instantiateViewController(identifier: vc) as! AllTransactions_ViewController
-        vc.modalPresentationStyle = .fullScreen
+    
+    @IBAction func info_IncomeBtn_Action(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "InfoPopUp_VC") as! InfoPopUp_ViewController
+        vc.isIncomeInfo = true
+        vc.modalPresentationStyle = .automatic
         self.present(vc, animated: true, completion: nil)
+    }
+    @IBAction func info_ExpenseBtn_Action(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "InfoPopUp_VC") as! InfoPopUp_ViewController
+        vc.modalPresentationStyle = .automatic
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func openScreen(vc: String?) {
+        let vc = self.storyboard?.instantiateViewController(identifier: vc!)
+        vc!.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true, completion: nil)
     }
     
     
     
     //MARK: - Table View...
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         
         if transactionToShow.count == 0 {
             table_View.isHidden = true
@@ -316,10 +359,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Current date
+        let currentDate = Date()
+        let calendar = Calendar.current
+
+        let currentYear = calendar.component(.year, from: currentDate)
+        let currentMonth = calendar.component(.month, from: currentDate)
+        let currentDay = calendar.component(.day, from: currentDate)
         
-        let lastTransaction = transactionToShow[indexPath.row]
         
         let cell = Bundle.main.loadNibNamed("LastTransaction_TableViewCell", owner: self, options: nil)?.first as! LastTransaction_TableViewCell
+        let lastTransaction = transactionToShow[indexPath.row]
+        
+        if lastTransaction.year == currentYear && lastTransaction.month == currentMonth && lastTransaction.day == currentDay {
+            cell.upcoming_Label.isHidden = true
+        }
+        
+        cell.actionDelegate = self
+        cell.index = indexPath.row
+        
+        
+        
+        
         
         let icon = lastTransaction.icon
         cell.categoryImage.image = UIImage(systemName: icon)!
@@ -338,36 +399,93 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             cell.amout.textColor = #colorLiteral(red: 0.4696043647, green: 0.8248788522, blue: 0.006127688114, alpha: 1)
         }
+        
+        
+        if lastTransaction.isPresent == false {
+            cell.upcomingReminderView.isHidden = true
+            cell.date.textColor = .lightGray
+        } else if lastTransaction.isPresent == true {
+            cell.upcomingReminderView.isHidden = false
+            cell.date.textColor = .systemTeal
+        }
+        
+        
         cell.notes.text = lastTransaction.notes
         cell.name.text = lastTransaction.category
         cell.date.text = lastTransaction.date
         
+        
         return cell
     }
+    
+    func showUpTrn_AlertAction(body: String, object: Transaction) {
+        let alert = UIAlertController(title: "Hi, Boss", message: body, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes I did", style: .default, handler: { [self] action in
+            getUpTrnCalculation()
+            openScreen(vc: "Home_VC")
+        }))
+        alert.addAction(UIAlertAction(title: "Not and Delete", style: .cancel, handler: { [self] action in
+            realdb.deleteTransaction(object: object)
+            openScreen(vc: "Home_VC")
+        }))
+    }
+    
+    func didButtonTapped(index: Int) {
+        
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let lastTransaction = transactionToShow [indexPath.row]
         
-        let vc = self.storyboard?.instantiateViewController(identifier: "SelectedTransaction_VC") as! SelectedTransaction_ViewController
+        
+        if lastTransaction.isPresent == true {
+            let vc = self.storyboard?.instantiateViewController(identifier: "CheckingUpcomingTrn_VC") as! CheckingUpcomingTrn_ViewController
 
+            vc.selectedTransaction = lastTransaction
+            
+            vc.modalPresentationStyle = .automatic
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            let vc = self.storyboard?.instantiateViewController(identifier: "SelectedTransaction_VC") as! SelectedTransaction_ViewController
+
+            vc.selectedTransacion = lastTransaction
+            vc.amount = lastTransaction.amount
+            vc.categoryImg = lastTransaction.icon
+            vc.category_Label = lastTransaction.category
+            vc.type = lastTransaction.type
+            vc.date = lastTransaction.date
+            vc.note = lastTransaction.notes
+            
+            vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+        }
         
-        vc.selectedTransacion = lastTransaction
-        vc.amount = lastTransaction.amount
-        vc.categoryImg = lastTransaction.icon
-        vc.categoryLabel = lastTransaction.category
-        vc.type = lastTransaction.type
-        vc.date = lastTransaction.date
-        vc.note = lastTransaction.notes
-        
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+            
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
+
+        
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let lastTransaction = self.transactionToShow[indexPath.row]
+        
+//        func removeSelectedUserNotification() {
+//            UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+//               var identifiers: [String] = []
+//               for notification:UNNotificationRequest in notificationRequests {
+//                if notification.identifier == lastTransaction.uuid {
+//                      identifiers.append(notification.identifier)
+//                   }
+//               }
+//               UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+//            }
+//        }
         
         let expenseL = "expenseL".localized()
         let incomeL = "incomeL".localized()
@@ -380,45 +498,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let actionsheet = UIAlertController(title: "Would you like to delete this transaction?", message: nil, preferredStyle: .actionSheet)
             
-            actionsheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-                let lastTransaction = self.transactionToShow[indexPath.row]
-
-                if lastTransaction.type == (expenseL + " ▼") {
-                    totalBalance = totalBalance! + Int(lastTransaction.amount)!
-                    self.defaults.saveCashBalance(balance: String(totalBalance!))
-                    if expense! >= 0 {
-                        expense = expense! - Int(lastTransaction.amount)!
-                        self.defaults.saveExpense(expense: String(expense!))
-                    }
-                } else if lastTransaction.type == (incomeL + " ▼") {
-                    totalBalance = totalBalance! - Int(lastTransaction.amount)!
-                    self.defaults.saveCashBalance(balance: String(totalBalance!))
-                    if income! >= 0 {
-                        income = income! - Int(lastTransaction.amount)!
-                        self.defaults.saveIncome(income: String(income!))
+            actionsheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [self] _ in
+                
+                if lastTransaction.isPresent != true {
+                    if lastTransaction.type == (expenseL + " ▼") {
+                        totalBalance = totalBalance! + Int(lastTransaction.amount)!
+                        self.defaults.saveCashBalance(balance: String(totalBalance!))
+                        if expense! >= 0 {
+                            expense = expense! - Int(lastTransaction.amount)!
+                            self.defaults.saveExpense(expense: String(expense!))
+                        }
+                    } else if lastTransaction.type == (incomeL + " ▼") {
+                        totalBalance = totalBalance! - Int(lastTransaction.amount)!
+                        self.defaults.saveCashBalance(balance: String(totalBalance!))
+                        if income! >= 0 {
+                            income = income! - Int(lastTransaction.amount)!
+                            self.defaults.saveIncome(income: String(income!))
+                        }
                     }
                 }
-
+                
+                notificationCenter.removeDeliveredNotifications(withIdentifiers: [lastTransaction.uuid])
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: [lastTransaction.uuid])
+                
                 self.realdb.deleteTransaction(object: lastTransaction)
                 self.transactionToShow = self.realdb.getTransactions()
                 self.table_View.reloadData()
-                self.openHomeScreen(vc: "Home_VC")
+                openScreen(vc: "Home_VC")
+                
             }))
             
             actionsheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
             }))
             
             present(actionsheet, animated: true)
-            
         }
         
+        
+        
         if editingStyle == .delete {
-            
             showActionSheet()
-
         }
         
     }
+    
     
     
     func openHomeScreen(vc: String) {
@@ -427,11 +550,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.present(vc, animated: true, completion: nil)
     }
     
-
-    
-
- 
-
+    public func animatedTableView() {
+        table_View.reloadData()
+        let cells = table_View.visibleCells
+        let tableViewHeight = table_View.bounds.size.height
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+        
+    }
 
 }
 
@@ -475,3 +609,4 @@ extension Formatter {
 extension Numeric {
     var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
 }
+

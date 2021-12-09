@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SetLanguage_ViewController: UIViewController {
+class SetLanguage_ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     @IBOutlet var title_label: UILabel!
     @IBOutlet var description_label: UILabel!
@@ -29,12 +29,14 @@ class SetLanguage_ViewController: UIViewController {
     var langLabel = "LangLabel".localized()
     
     let defaults = DefaultsOfUser()
+    let notificationCenter = UNUserNotificationCenter.current()
+    let publishNotification = NotificationPublisher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initViews()
-        
+        overrideUserInterfaceStyle = .light
     }
     
     @IBAction func nextBtn_Action(_ sender: Any) {
@@ -45,6 +47,9 @@ class SetLanguage_ViewController: UIViewController {
     //MARK: - Methods...
     
     func initViews() {
+        self.notificationCenter.delegate = self
+        
+        publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you check your cash balance today?", badge: 1, hour: 7, min: 30, useerN: notificationCenter)
         
         setLangValue()
         setupLabelTap()
@@ -58,6 +63,8 @@ class SetLanguage_ViewController: UIViewController {
         nextBtn_BV.layer.cornerRadius = 18.0
         modifierUI(ui: nextBtn_BV)
     }
+    
+    
     
     func modifierUI(ui: UIView) {
         ui.layer.shadowColor = UIColor.black.cgColor

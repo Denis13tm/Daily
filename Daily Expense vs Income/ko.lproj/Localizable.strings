@@ -69,6 +69,20 @@
 "title7" = "모든 트랜잭션";
 "noTran" = "아직 트랜잭션 없음";
 
+//Profile Screen
+"title8" = "프로필";
+"dailyIncome" = "일일 수입";
+"dailyExpenses" = "일일 경비";
+"totalBalance_CardView" = "전체 균형";
+"about" = "'Cash Flow'에 대한";
+"explanation" = "재무담당자 'CASH FLOW'에 오신 것을 환영합니다. 이 앱을 사용하면 먼저 비용과 수입을 쉽게 추가하고 지출 및 저축을 위한 예산과 목표를 설정할 수 있습니다. 재무 예산을 쉽게 관리할 수 있습니다.";
+"editBtn" = "편집하다";
+"totalBalance_Edition" = "전체 균형";
+"income_Edition" = "수입";
+"expense_Edition" = "경비";
+"cancelBtn" = "취소";
+"saveChangesBtn" = "변경 사항을 저장하다";
+
 
 // Category Items
 "exp_Income" = "기대 소득";
@@ -89,3 +103,8 @@
 "shopping" = "쇼핑";
 "hairCut" = "이발";
 "tools" = "도구";
+
+//Exchange Currency
+
+"title9" = "환율 계산기";
+"amount_placeholder" = "금액을 입력하세요";

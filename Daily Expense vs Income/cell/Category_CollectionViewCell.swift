@@ -20,6 +20,7 @@ class Category_CollectionViewCell: UICollectionViewCell {
         
         collectionCell_BV.layer.cornerRadius = 13.0
         modifierUI(ui: collectionCell_BV)
+        overrideUserInterfaceStyle = .light
     }
     func modifierUI(ui: UIView) {
         ui.layer.shadowColor = UIColor.gray.cgColor

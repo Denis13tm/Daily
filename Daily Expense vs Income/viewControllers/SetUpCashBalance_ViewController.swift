@@ -26,10 +26,11 @@ class SetUpCashBalance_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.hideKeyboardWhenTappedAround()
         initViews()
+        overrideUserInterfaceStyle = .light
 
-        
     }
     
     //MARK: - Methods...

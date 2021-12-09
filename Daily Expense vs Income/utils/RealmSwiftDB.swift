@@ -15,10 +15,15 @@ class RealmSwiftDB {
     private let defaults = DefaultsOfUser()
     
     func saveTransaction(object: Transaction) {
+        do {
+            realm.beginWrite()
+            realm.add(object)
+            try realm.commitWrite()
+        } catch let error as NSError {
+            // handle error
+            print("error - \(error.localizedDescription)")
+        }
         
-        realm.beginWrite()
-        realm.add(object)
-        try! realm.commitWrite()
         
     }
     
@@ -28,7 +33,8 @@ class RealmSwiftDB {
         var listTransactions = [Transaction]()
         
         for singleT in transactions {
-            listTransactions.append(singleT)
+//            listTransactions.append(singleT)
+            listTransactions.insert(singleT, at: 0)
         }
         
         
@@ -44,7 +50,7 @@ class RealmSwiftDB {
         
         for singleT in transactions {
             if singleT.type == "Income ▼" || singleT.type == "Kirim ▼" || singleT.type == "수입 ▼" {
-                listExpProfit.append(singleT)
+                listExpProfit.insert(singleT, at: 0)
             }
         }
         return listExpProfit
@@ -59,7 +65,7 @@ class RealmSwiftDB {
         
         for singleT in transactions {
             if singleT.type == "Expense ▼" || singleT.type == "Chiqim ▼" || singleT.type == "경비 ▼" {
-                listExpCost.append(singleT)
+                listExpCost.insert(singleT, at: 0)
             }
         }
         return listExpCost
@@ -69,11 +75,17 @@ class RealmSwiftDB {
     
     func deleteTransaction(object: Transaction) {
         
-        try! realm.write {
-            realm.delete(object)
+        do {
+            try realm.write {
+        
+                realm.delete(object)
+                
+            }
+            
+        } catch let error as NSError {
+            // handle error
+            print("error - \(error.localizedDescription)")
         }
-        
-        
     }
     
     func updateTransaction(object: Transaction, type: String, categoryLabel: String, categoryIcon: String, amount: String, date: String, notes: String) {
@@ -85,6 +97,34 @@ class RealmSwiftDB {
             object.amount = amount
             object.date = date
             object.notes = notes
+        }
+        
+    }
+    func updateTransaction2(object: Transaction, type: String, categoryLabel: String, categoryIcon: String, amount: String, date: String, notes: String, isPresent: Bool, uuid: String, year: Int, month: Int, day: Int, hour: Int, minute: Int) {
+        
+        try! realm.write {
+            object.type = type
+            object.category = categoryLabel
+            object.icon = categoryIcon
+            object.amount = amount
+            object.date = date
+            object.notes = notes
+            object.isPresent = isPresent
+            object.uuid = uuid
+            
+            object.year = year
+            object.month = month
+            object.day = day
+            object.hour = hour
+            object.minute = minute
+        }
+        
+    }
+    
+    func updateIsPresent(object: Transaction, isPresent: Bool) {
+        
+        try! realm.write {
+            object.isPresent = isPresent
         }
         
     }

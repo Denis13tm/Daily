@@ -69,6 +69,20 @@
 "title7" = "Barcha O'tkazmalar";
 "noTran" = "Hali o'tkazma mavjud emas ";
 
+//Profile Screen
+"title8" = "Profil";
+"dailyIncome" = "Kunlik Foyda";
+"dailyExpenses" = "Kunlik Xarajat";
+"totalBalance_CardView" = "UMUMIY BALANSINGIZ";
+"about" = "App haqida";
+"explanation" = "'CASH FLOW moliyaviy menejeringizga xush kelibsiz. Ushbu ilova yordamida, birinchi navbatda, siz o'z xarajatlaringiz va daromadlaringizni osongina qo'shishingiz, shuningdek, sarflash va tejash uchun byudjet va maqsadlarni yaratishingiz mumkin. Shunday qilib, siz o'zingizning moliyaviy byudjetlaringizni osongina boshqarishingiz mumkin.";
+"editBtn" = "O'zgartirish";
+"totalBalance_Edition" = "Umumiy Balansingiz";
+"income_Edition" = "Foyda";
+"expense_Edition" = "Xarajat";
+"cancelBtn" = "Bekor qilish";
+"saveChangesBtn" = "Saqlash";
+
 
 // Category Items
 "exp_Income" = "Kutilayotgan Foyda";
@@ -89,3 +103,8 @@
 "shopping" = "Bozorlik qilish";
 "hairCut" = "Soch oldirish";
 "tools" = "Asbob-anjomlar";
+
+//Exchange Currency
+
+"title9" = "Valyuta ayrboshlash";
+"amount_placeholder" = "Miqdorni kiriting";

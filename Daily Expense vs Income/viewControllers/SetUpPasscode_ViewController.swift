@@ -35,6 +35,7 @@ class SetUpPasscode_ViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         initViews()
+        overrideUserInterfaceStyle = .light
     }
     
     func initViews() {

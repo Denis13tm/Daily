@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C5A25147CEF533DE8639DA1C /* Pods_Daily_Expense_vs_Income.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */; };
+		F227462127601D6400699AF1 /* InfoPopUp_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227462027601D6400699AF1 /* InfoPopUp_ViewController.swift */; };
 		F248DE57274BD0680050FA40 /* SelectedTransaction_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */; };
 		F248DE5A274ECD760050FA40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F248DE5C274ECD760050FA40 /* Localizable.strings */; };
 		F248DE69274EF84C0050FA40 /* SetLanguage_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F248DE68274EF84C0050FA40 /* SetLanguage_ViewController.swift */; };
@@ -39,12 +40,18 @@
 		F27339052733A19A0050979E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27339042733A1940050979E /* Transaction.swift */; };
 		F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */; };
 		F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */; };
+		F2E7A4072757B2CA0071B501 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E7A4062757B2CA0071B501 /* UserNotifications.framework */; };
+		F2E7A4092757D4B50071B501 /* NotificationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E7A4082757D4B50071B501 /* NotificationPublisher.swift */; };
+		F2E7A40B275A56430071B501 /* CheckingUpcomingTrn_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E7A40A275A56420071B501 /* CheckingUpcomingTrn_ViewController.swift */; };
+		F2E7A40F275AB3550071B501 /* CurrencyConverter_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E7A40E275AB3550071B501 /* CurrencyConverter_ViewController.swift */; };
+		F2E7A411275ACEA10071B501 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E7A410275ACEA10071B501 /* ExchangeRates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E918F2ED8FA687D713C1C0C /* Pods-Daily Expense vs Income.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.debug.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.debug.xcconfig"; sourceTree = "<group>"; };
 		84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily_Expense_vs_Income.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD03E26F99E88495243C448B /* Pods-Daily Expense vs Income.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily Expense vs Income.release.xcconfig"; path = "Target Support Files/Pods-Daily Expense vs Income/Pods-Daily Expense vs Income.release.xcconfig"; sourceTree = "<group>"; };
+		F227462027601D6400699AF1 /* InfoPopUp_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopUp_ViewController.swift; sourceTree = "<group>"; };
 		F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTransaction_ViewController.swift; sourceTree = "<group>"; };
 		F248DE5B274ECD760050FA40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F248DE5D274ECE510050FA40 /* uz */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uz; path = uz.lproj/Main.strings; sourceTree = "<group>"; };
@@ -84,6 +91,11 @@
 		F27339042733A1940050979E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		F273390B2733F0500050979E /* SetUpBaseCurrency_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpBaseCurrency_ViewController.swift; sourceTree = "<group>"; };
 		F273390D273410DF0050979E /* SetUpCashBalance_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpCashBalance_ViewController.swift; sourceTree = "<group>"; };
+		F2E7A4062757B2CA0071B501 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		F2E7A4082757D4B50071B501 /* NotificationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPublisher.swift; sourceTree = "<group>"; };
+		F2E7A40A275A56420071B501 /* CheckingUpcomingTrn_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingUpcomingTrn_ViewController.swift; sourceTree = "<group>"; };
+		F2E7A40E275AB3550071B501 /* CurrencyConverter_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter_ViewController.swift; sourceTree = "<group>"; };
+		F2E7A410275ACEA10071B501 /* ExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +105,7 @@
 			files = (
 				C5A25147CEF533DE8639DA1C /* Pods_Daily_Expense_vs_Income.framework in Frameworks */,
 				F266690327497CE4005B619A /* Lottie in Frameworks */,
+				F2E7A4072757B2CA0071B501 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +115,7 @@
 		0C55E44EDB62565170D550EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2E7A4062757B2CA0071B501 /* UserNotifications.framework */,
 				84C2A0EFCEDA40889CD198DC /* Pods_Daily_Expense_vs_Income.framework */,
 			);
 			name = Frameworks;
@@ -174,6 +188,9 @@
 				F24F2D5427422436005F77D8 /* AllTransactions_ViewController.swift */,
 				F24F2D56274289CF005F77D8 /* OTP_ViewController.swift */,
 				F248DE56274BD0680050FA40 /* SelectedTransaction_ViewController.swift */,
+				F2E7A40A275A56420071B501 /* CheckingUpcomingTrn_ViewController.swift */,
+				F2E7A40E275AB3550071B501 /* CurrencyConverter_ViewController.swift */,
+				F227462027601D6400699AF1 /* InfoPopUp_ViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -183,6 +200,7 @@
 			children = (
 				F27339042733A1940050979E /* Transaction.swift */,
 				F24F2D6827467A98005F77D8 /* CategoryCell.swift */,
+				F2E7A410275ACEA10071B501 /* ExchangeRates.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -207,6 +225,7 @@
 				F24F2D4027397E5F005F77D8 /* RegistrationForNotification.swift */,
 				F24F2D6A27468312005F77D8 /* Category_Items.swift */,
 				F248DE6C274F49060050FA40 /* Languages.swift */,
+				F2E7A4082757D4B50071B501 /* NotificationPublisher.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -349,6 +368,7 @@
 				F24F2D4F273FA4F8005F77D8 /* RealmSwiftDB.swift in Sources */,
 				F2733902273168360050979E /* NewTransaction_ViewController.swift in Sources */,
 				F24F2D4D273BD80A005F77D8 /* Profile_ViewController.swift in Sources */,
+				F2E7A4092757D4B50071B501 /* NotificationPublisher.swift in Sources */,
 				F24F2D4427399AB0005F77D8 /* LastTransaction_TableViewCell.swift in Sources */,
 				F2733900273167F70050979E /* ViewController.swift in Sources */,
 				F24F2D3F27396AD0005F77D8 /* Launch_ViewController.swift in Sources */,
@@ -358,17 +378,21 @@
 				F248DE6D274F49070050FA40 /* Languages.swift in Sources */,
 				F24F2D592742DE51005F77D8 /* SetUpPasscode_ViewController.swift in Sources */,
 				F24F2D5527422437005F77D8 /* AllTransactions_ViewController.swift in Sources */,
+				F2E7A411275ACEA10071B501 /* ExchangeRates.swift in Sources */,
 				F24F2D4127397E5F005F77D8 /* RegistrationForNotification.swift in Sources */,
+				F227462127601D6400699AF1 /* InfoPopUp_ViewController.swift in Sources */,
 				F273390E273410E00050979E /* SetUpCashBalance_ViewController.swift in Sources */,
 				F24F2D3D27396555005F77D8 /* UserDefaults.swift in Sources */,
 				F273390C2733F0500050979E /* SetUpBaseCurrency_ViewController.swift in Sources */,
 				F248DE57274BD0680050FA40 /* SelectedTransaction_ViewController.swift in Sources */,
 				F27338ED273133B90050979E /* SceneDelegate.swift in Sources */,
 				F27339052733A19A0050979E /* Transaction.swift in Sources */,
+				F2E7A40F275AB3550071B501 /* CurrencyConverter_ViewController.swift in Sources */,
 				F24F2D6B27468312005F77D8 /* Category_Items.swift in Sources */,
 				F24F2D6627467610005F77D8 /* Category_CollectionViewCell.swift in Sources */,
 				F24F2D6927467A98005F77D8 /* CategoryCell.swift in Sources */,
 				F248DE6B274F25D90050FA40 /* LanguagePopUp_ViewController.swift in Sources */,
+				F2E7A40B275A56430071B501 /* CheckingUpcomingTrn_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -517,7 +541,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -536,7 +560,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWVBT323AX;
 				INFOPLIST_FILE = "Daily Expense vs Income/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -557,7 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWVBT323AX;
 				INFOPLIST_FILE = "Daily Expense vs Income/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

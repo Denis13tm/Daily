@@ -13,4 +13,16 @@ public class Transaction: Object {
     @objc dynamic var date: String = ""
     @objc dynamic var notes: String = ""
     
+    @objc dynamic var isPresent: Bool = false
+    @objc dynamic var isUpcoming: Bool = false
+    
+    @objc dynamic var year: Int = 0
+    @objc dynamic var month: Int = 0
+    @objc dynamic var day: Int = 0
+    @objc dynamic var hour: Int = 0
+    @objc dynamic var minute: Int = 0
+    
+    
+    @objc dynamic var uuid: String = ""
+    
 }

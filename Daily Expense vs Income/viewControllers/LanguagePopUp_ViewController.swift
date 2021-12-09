@@ -27,11 +27,15 @@ class LanguagePopUp_ViewController: UIViewController {
         super.viewDidLoad()
 
         initViews()
+        overrideUserInterfaceStyle = .light
+        let blur = UIBlurEffect(style: .regular)
+        let visualEffectView = UIVisualEffectView(effect: blur)
+        view.addSubview(visualEffectView)
         
     }
     @IBAction func closeViewBtn_Action(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
+    }    
     
     //MARK: - Methods
     

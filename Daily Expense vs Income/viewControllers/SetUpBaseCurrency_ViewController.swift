@@ -39,6 +39,7 @@ class SetUpBaseCurrency_ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+        overrideUserInterfaceStyle = .light
         
     }
     

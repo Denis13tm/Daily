@@ -4,10 +4,10 @@
 //
 //  Created by Otabek Tuychiev on 02/11/2021.
 //
-
+import UserNotifications
 import UIKit
 
-class NewTransaction_ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class NewTransaction_ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UNUserNotificationCenterDelegate {
 
     @IBOutlet var mainBackgroundView: UIScrollView!
     @IBOutlet var warningLabel: UILabel!
@@ -72,17 +72,28 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
     let defaults1 = UserDefaults.standard
     let defaults = DefaultsOfUser()
     let realmDB = RealmSwiftDB()
+    let notificationCenter = UNUserNotificationCenter.current()
+    let publishNotification = NotificationPublisher()
+    var transactionToShow = [Transaction]()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in }
+        notificationCenter.delegate = self
+        
         self.hideKeyboardWhenTappedAround()
         initViews()
+        overrideUserInterfaceStyle = .light
 
     }
+    
     
     //MARK: - Methods...
     
     func initViews() {
+    
         
         setLangValue()
         
@@ -93,41 +104,29 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
             categoryLabel.setTitle((defaults1.string(forKey: "categoryTitle")! + " ▼"), for: .normal)
         }
         
-        
         setUpTransactionType()
         
-        
         modifierUI(ui: navigationBar_BV)
-        
         typeSection_BV.layer.cornerRadius = 13.0
         modifierUI(ui: typeSection_BV)
         modifierUI(ui: typeSelector_BV)
-        
         amountSection_BV.layer.cornerRadius = 13.0
         modifierUI(ui: amountSection_BV)
-        
         categorySection_BV.layer.cornerRadius = 13.0
         modifierUI(ui: categorySection_BV)
-        
         dateSection_BV.layer.cornerRadius = 13.0
         modifierUI(ui: dateSection_BV)
-        
         noteSection_BV.layer.cornerRadius = 13.0
         modifierUI(ui: noteSection_BV)
-        
         saveBtnBackgroundView.layer.cornerRadius = 18.0
         modifierUI(ui: saveBtnBackgroundView)
-        
-        
         
         collectionView_BV.layer.cornerRadius = 13.0
         modifierUI(ui: collectionView_BV)
         
         self.collectionView.register(UINib(nibName: "Category_CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Category_CollectionViewCell")
         
-        
         setUpGridView()
-        
     }
     
     
@@ -232,13 +231,23 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         let currentYear = calendar.component(.year, from: currentDate) //year: Int
         let currentMonth = calendar.component(.month, from: currentDate) //month: Int
         let currentDay = calendar.component(.day, from: currentDate) //day: Int
+        let currentHour = calendar.component(.hour, from: currentDate) //day: Int
+        let currentMinute = calendar.component(.minute, from: currentDate) //day: Int
         
         
         // DatePicker orqali tanlangan date
         let yearFromDatePicker = calendar.component(.year, from: datePicker.date) //year: Int
         let monthFromDatePicker = calendar.component(.month, from: datePicker.date) //month: Int
         let dayFromDatePicker = calendar.component(.day, from: datePicker.date) //day: Int
+        let hourFromDatePicker = calendar.component(.hour, from: datePicker.date) //day: Int
+        let minuteFromDatePicker = calendar.component(.minute, from: datePicker.date) //day: Int
         
+        newTransaction.year = yearFromDatePicker
+        newTransaction.month = monthFromDatePicker
+        newTransaction.day = dayFromDatePicker
+        
+        let uuidString = UUID().uuidString
+        newTransaction.uuid = uuidString
         
         if currentYear == yearFromDatePicker {
             //if years equals, and then months sholud be compared
@@ -246,21 +255,76 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
                 
                 //if months equals, and then days be compared
                 if currentDay == dayFromDatePicker {
-                    //do
-                    if type == (expenseL + " ▼") {
-                        totalBalance = totalBalance! - Int(amount)!
-                        defaults.saveCashBalance(balance: String(totalBalance!))
-                        expense = expense! + Int(amount)!
-                        defaults.saveExpense(expense: String(expense!))
-                        print("Expense")
-                    } else if type == (incomeL + " ▼") {
-                        totalBalance = totalBalance! + Int(amount)!
-                        defaults.saveCashBalance(balance: String(totalBalance!))
-                        income = income! + Int(amount)!
-                        defaults.saveIncome(income: String(income!))
-                        print("Income")
+                    if currentHour == hourFromDatePicker {
+                        if currentMinute == minuteFromDatePicker {
+                            if type == (expenseL + " ▼") {
+                                totalBalance = totalBalance! - Int(amount)!
+                                defaults.saveCashBalance(balance: String(totalBalance!))
+                                expense = expense! + Int(amount)!
+                                defaults.saveExpense(expense: String(expense!))
+                                print("Expense")
+                            } else if type == (incomeL + " ▼") {
+                                totalBalance = totalBalance! + Int(amount)!
+                                defaults.saveCashBalance(balance: String(totalBalance!))
+                                income = income! + Int(amount)!
+                                defaults.saveIncome(income: String(income!))
+                                print("Income")
+                            }
+                            print("Now")
+                        } else if currentMinute > minuteFromDatePicker {
+                            if type == (expenseL + " ▼") {
+                                totalBalance = totalBalance! - Int(amount)!
+                                defaults.saveCashBalance(balance: String(totalBalance!))
+                                expense = expense! + Int(amount)!
+                                defaults.saveExpense(expense: String(expense!))
+                                
+                            } else if type == (incomeL + " ▼") {
+                                totalBalance = totalBalance! + Int(amount)!
+                                defaults.saveCashBalance(balance: String(totalBalance!))
+                                income = income! + Int(amount)!
+                                defaults.saveIncome(income: String(income!))
+                                
+                            }
+                            print("Before minute")
+                        } else if currentMinute < minuteFromDatePicker {
+                            if type == (expenseL + " ▼") {
+//                                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                                registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                            } else if type == (incomeL + " ▼") {
+                                //                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                                registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                            }
+                            newTransaction.isUpcoming = true
+                            newTransaction.isPresent = true
+                            print("After minute")
+                        }
+                    } else if currentHour > hourFromDatePicker {
+                        if type == (expenseL + " ▼") {
+                            totalBalance = totalBalance! - Int(amount)!
+                            defaults.saveCashBalance(balance: String(totalBalance!))
+                            expense = expense! + Int(amount)!
+                            defaults.saveExpense(expense: String(expense!))
+                            
+                        } else if type == (incomeL + " ▼") {
+                            totalBalance = totalBalance! + Int(amount)!
+                            defaults.saveCashBalance(balance: String(totalBalance!))
+                            income = income! + Int(amount)!
+                            defaults.saveIncome(income: String(income!))
+                            
+                        }
+                        print("Before hour")
+                    } else if currentHour < hourFromDatePicker {
+                        if type == (expenseL + " ▼") {
+ //                           publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                            registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                        } else if type == (incomeL + " ▼") {
+                            //                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                            registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                        }
+                        newTransaction.isUpcoming = true
+                        newTransaction.isPresent = true
+                        print("After hour")
                     }
-                    print("Now")
                     
                 } else if currentDay > dayFromDatePicker {
                     // do
@@ -278,6 +342,17 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
                         
                     }
                     print("Before day")
+                } else if currentDay < dayFromDatePicker {
+                    if type == (expenseL + " ▼") {
+//                        publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                        registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                    } else if type == (incomeL + " ▼") {
+                        //                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                        registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                    }
+                    newTransaction.isUpcoming = true
+                    newTransaction.isPresent = true
+                    print("After day")
                 }
                 
                 
@@ -299,6 +374,18 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
                     
                 }
                 print("Before month")
+            } else if currentMonth < monthFromDatePicker {
+                //will do
+                if type == (expenseL + " ▼") {
+//                    publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                    registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                } else if type == (incomeL + " ▼") {
+                    //                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                    registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+                }
+                newTransaction.isUpcoming = true
+                newTransaction.isPresent = true
+                print("After month")
             }
             
             
@@ -320,15 +407,20 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
                 
             }
             print("Before year")
-        } else {
+        } else if currentYear < yearFromDatePicker {
             //will do
-            print("future")
+            if type == (expenseL + " ▼") {
+//                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you spend that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+            } else if type == (incomeL + " ▼") {
+//                publishNotification.send_N(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, useerN: notificationCenter)
+                registerUserNotification(title: "Hi Boss, this's CASH FLOW", body: "Did you recieve that amount of money today?", badge: 1, hour: hourFromDatePicker, min: minuteFromDatePicker, uuid: newTransaction.uuid)
+            }
+            newTransaction.isUpcoming = true
+            newTransaction.isPresent = true
+            print("After year")
         }
         
-
-        
-        
-//        realmDB.calculateCashFlow()
         
         realmDB.saveTransaction(object: newTransaction)
         openScreen(vc: "Home_VC")
@@ -341,41 +433,77 @@ class NewTransaction_ViewController: UIViewController, UICollectionViewDataSourc
         return currentDate
     }
     
-    func registerForNotification(type: String, date: Calendar) {
+    
+    
+    func showUpTrn_AlertAction(body: String, object: Transaction) {
+        let alert = UIAlertController(title: "Hi, Boss", message: body, preferredStyle: .alert)
         
-        // Notification content.
-        let content = UNMutableNotificationContent()
-        content.title = "Hi Boss"
-        content.body = "Have you spent that amount of money today ?"
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.realmDB.deleteTransaction(object: object)
+            self.openScreen(vc: "Home_VC")
+        }))
+        alert.addAction(UIAlertAction(title: "Not", style: .cancel, handler: { action in
+            self.openScreen(vc: "Home_VC")
+        }))
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .sound, .alert])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        //Date.
+        let vc = self.storyboard?.instantiateViewController(identifier: "AllTransactions_VC")
+        vc!.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true, completion: nil)
+        
+       print("Usernotification open screen")
+        completionHandler()
+    }
+
+    
+    
+    func registerUserNotification(title: String, body: String, badge: Int?, hour: Int?, min: Int?, uuid: String) {
+        
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = title
+        notificationContent.body = body
+        
         var dateComponents = DateComponents()
-        dateComponents.calendar = date
+        dateComponents.calendar = Calendar.current
+        dateComponents.hour = hour
+        dateComponents.minute = min
         
-        
-        //Create the tigger as a repeating event.
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        //Create the request.
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        if let badge = badge {
+            var currentBudgeCount = UIApplication.shared.applicationIconBadgeNumber
+            currentBudgeCount += badge
+            notificationContent.badge = NSNumber(integerLiteral: currentBudgeCount)
+        }
         
-        //Schedule the request with system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                //Handle any errors
-                print("DEBUD: Register For Notification - \(String(describing: error))")
-                
+        notificationContent.sound = UNNotificationSound.default
+        
+        
+        let uuidString = UUID().uuidString
+        defaults1.set(uuidString, forKey: "UNID")
+        
+        let request = UNNotificationRequest(identifier: uuid, content: notificationContent, trigger: trigger)
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
         
     }
     
-    func openScreen(vc: String) {
-        let vc = self.storyboard?.instantiateViewController(identifier: vc) as! ViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+    
+
+    
+    func openScreen(vc: String?) {
+        let vc = self.storyboard?.instantiateViewController(identifier: vc!)
+        vc!.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true, completion: nil)
     }
     
     //Type of Transaction...

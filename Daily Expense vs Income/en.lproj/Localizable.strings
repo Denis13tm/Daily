@@ -69,6 +69,20 @@
 "title7" = "All Transactions";
 "noTran" = "No Transactions Yet";
 
+//Profile Screen
+"title8" = "Profile";
+"dailyIncome" = "Daily Incomes";
+"dailyExpenses" = "Daily Expenses";
+"totalBalance_CardView" = "TOTAL BALANCE";
+"about" = "About";
+"explanation" = "Welcome to your finances manager 'CASH FLOW'. With this app ,firstly, you can easily add your expense and incomes, and also create budgets and goals for spending and saving. So that you can easily manage your financial budgets.";
+"editBtn" = "Edit";
+"totalBalance_Edition" = "Total Balance";
+"income_Edition" = "Income";
+"expense_Edition" = "Expense";
+"cancelBtn" = "Cancel";
+"saveChangesBtn" = "Save changes";
+
 
 // Category Items
 "exp_Income" = "Expecting Income";
@@ -90,7 +104,9 @@
 "hairCut" = "Hair Cut";
 "tools" = "Tools";
 
+//Exchange Currency
 
-
+"title9" = "Currency Converter";
+"amount_placeholder" = "Enter amount";
 
 

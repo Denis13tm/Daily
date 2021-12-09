@@ -7,22 +7,38 @@
 
 import UIKit
 
-class Profile_ViewController: UIViewController {
+class Profile_ViewController: UIViewController, UIScrollViewDelegate {
 
     
+    @IBOutlet var about_label: UILabel!
+    @IBOutlet var explaination_label: UILabel!
     
+    
+    @IBOutlet var totalBalance_Edition: UILabel!
+    @IBOutlet var incomeLabel_Edition: UILabel!
+    @IBOutlet var expenseLabel_Edition: UILabel!
+    
+    
+    @IBOutlet var title_label: UILabel!
     @IBOutlet var profileImage: UIImageView!
     
     @IBOutlet var incomeVsExpense_BV: UIView!
     @IBOutlet var expense_BV: UIView!
     @IBOutlet var income_BV: UIView!
+    @IBOutlet var daily_income_label: UILabel!
+    @IBOutlet var daily_expense_label: UILabel!
     
+    @IBOutlet var totalBalance_CardView_label: UILabel!
     @IBOutlet var totalBalance_BV: UIView!
     @IBOutlet var leftSideOfTotalB_BV: UIView!
     
-    @IBOutlet var cancel_Btn: UIView!
-    @IBOutlet var saveChanges_Btn: UIView!
-    @IBOutlet var edit_Btn: UIView!
+    @IBOutlet var cancelBtn_BV: UIView!
+    @IBOutlet var saveChangesBtn_BV: UIView!
+    @IBOutlet var editBtn_BV: UIView!
+    
+    @IBOutlet var cancel_Btn: UIButton!
+    @IBOutlet var save_Btn: UIButton!
+    @IBOutlet var edit_Btn: UIButton!
     
     @IBOutlet var BtnsGroup_BV: UIStackView!
     
@@ -45,6 +61,19 @@ class Profile_ViewController: UIViewController {
     
     
     
+    var title8 = "title8".localized()
+    var dailyIncome = "dailyIncome".localized()
+    var dailyExpenses = "dailyExpenses".localized()
+    var totalBalance_CardView = "totalBalance_CardView".localized()
+    var about = "about".localized()
+    var explanation = "explanation".localized()
+    var editBtn = "editBtn".localized()
+    var totalBalanceEdition = "totalBalance_Edition".localized()
+    var income_Edition = "income_Edition".localized()
+    var expense_Edition = "expense_Edition".localized()
+    var cancelBtn = "cancelBtn".localized()
+    var saveChangesBtn = "saveChangesBtn".localized()
+    
     
     let defaults = DefaultsOfUser()
     
@@ -53,8 +82,7 @@ class Profile_ViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         initViews()
-
-    
+        overrideUserInterfaceStyle = .light
     }
     
     
@@ -62,6 +90,8 @@ class Profile_ViewController: UIViewController {
     
     func initViews() {
         
+        
+        setLangValue()
         
         totalBalanceEditionLabel.placeholder = Int(defaults.getCashBalance()!)?.formattedWithSeparator
         incomeEditionLabel.placeholder = Int(defaults.getIncome()!)?.formattedWithSeparator
@@ -88,12 +118,12 @@ class Profile_ViewController: UIViewController {
         modifierUI(ui: totalBalance_BV)
         leftSideOfTotalB_BV.layer.cornerRadius = 18.0
         
-        cancel_Btn.layer.cornerRadius = 18.0
-        modifierUI(ui: cancel_Btn)
-        saveChanges_Btn.layer.cornerRadius = 18.0
-        modifierUI(ui: saveChanges_Btn)
-        edit_Btn.layer.cornerRadius = 18.0
-        modifierUI(ui: edit_Btn)
+        cancelBtn_BV.layer.cornerRadius = 18.0
+        modifierUI(ui: cancelBtn_BV)
+        saveChangesBtn_BV.layer.cornerRadius = 18.0
+        modifierUI(ui: saveChangesBtn_BV)
+        editBtn_BV.layer.cornerRadius = 18.0
+        modifierUI(ui: editBtn_BV)
         
         editionGroup_BV.layer.cornerRadius = 18.0
         modifierUI(ui: editionGroup_BV)
@@ -104,6 +134,22 @@ class Profile_ViewController: UIViewController {
         expenseSection.layer.cornerRadius = 18.0
         modifierUI(ui: expenseSection)
         
+    }
+    
+    func setLangValue() {
+        
+        title_label.text = title8
+        daily_income_label.text = dailyIncome
+        daily_expense_label.text = dailyExpenses
+        totalBalance_CardView_label.text = totalBalance_CardView
+        about_label.text = about
+        explaination_label.text = explanation
+        edit_Btn.setTitle(editBtn, for: .normal)
+        totalBalance_Edition.text = totalBalanceEdition
+        incomeLabel_Edition.text = income_Edition
+        expenseLabel_Edition.text = expense_Edition
+        cancel_Btn.setTitle(cancelBtn, for: .normal)
+        save_Btn.setTitle(saveChangesBtn, for: .normal)
     }
     
     func modifierUI(ui: UIView) {
@@ -126,26 +172,53 @@ class Profile_ViewController: UIViewController {
     @IBAction func editBtn_Action(_ sender: Any) {
         incomeVsExpense_BV.isHidden = true
         BtnsGroup_BV.isHidden = false
-        edit_Btn.isHidden = true
+        editBtn_BV.isHidden = true
         BtnsGroup_BV.isHidden = false
         totalBalance_BV.isHidden = true
         editionGroup_BV.isHidden = false
+        
+        animatedBtn(btn: cancelBtn_BV ?? (Any).self)
+        animatedBtn(btn: saveChangesBtn_BV ?? (Any).self)
+        animatedBtn(btn: editionGroup_BV ?? (Any).self)
+        
     }
+    
+    public func animatedBtn(btn: Any) {
+        let button = btn as! UIView
+        let bounds = button.bounds
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+            button.bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.size.width + 50, height: bounds.size.height)
+        }) { (success: Bool) in
+            if success {
+                UIView.animate(withDuration: 0.5, animations: {
+                    button.bounds = bounds
+                })
+            }
+            
+        }
+        
+    }
+    
     
     
     @IBAction func cancelBtn_Action(_ sender: Any) {
         incomeVsExpense_BV.isHidden = false
         BtnsGroup_BV.isHidden = true
-        edit_Btn.isHidden = false
+        editBtn_BV.isHidden = false
         BtnsGroup_BV.isHidden = true
         totalBalance_BV.isHidden = false
         editionGroup_BV.isHidden = true
+        
+        animatedBtn(btn: editBtn_BV ?? (Any).self)
+        animatedBtn(btn: incomeVsExpense_BV ?? (Any).self)
+        animatedBtn(btn: totalBalance_BV ?? (Any).self)
     }
     
     @IBAction func saveChangesBtn_Action(_ sender: Any) {
         incomeVsExpense_BV.isHidden = false
         BtnsGroup_BV.isHidden = true
-        edit_Btn.isHidden = false
+        editBtn_BV.isHidden = false
         BtnsGroup_BV.isHidden = true
         totalBalance_BV.isHidden = false
         editionGroup_BV.isHidden = true
